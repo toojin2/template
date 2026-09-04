@@ -167,3 +167,27 @@ data/templates.js  ──▶  Gallery ──▶ TemplateCard ──▶ 템플릿
 - 연습용이라 템플릿의 링크·버튼은 모두 더미(`#c`)이며 실제로 동작하지 않습니다.
 - 선택 상태는 서버에 저장되지 않아 다른 기기·브라우저에서 공유되지 않습니다.
 - 컨테이너 쿼리를 쓰므로 구형 브라우저(Chrome 105 미만 등)에서는 레이아웃이 깨질 수 있습니다.
+
+---
+
+## 결과물
+
+<img width="1920" height="3646" alt="screencapture-localhost-5173-2026-09-04-14_08_36" src="https://github.com/user-attachments/assets/d43bcd20-68fb-43c3-adae-a080d7bb850d" />
+<img width="1920" height="3605" alt="screencapture-localhost-5173-2026-09-04-14_08_30" src="https://github.com/user-attachments/assets/c09053f6-dd90-4224-b5ce-fff302444930" />
+<img width="1920" height="3306" alt="screencapture-localhost-5173-2026-09-04-14_08_22" src="https://github.com/user-attachments/assets/e22340a0-64c4-4866-a58e-376d429fe43e" />
+<img width="1920" height="1908" alt="screencapture-localhost-5173-2026-09-04-14_08_15" src="https://github.com/user-attachments/assets/add14e14-ed64-4fe5-9ec7-0315ef61e9ba" />
+<img width="1920" height="1790" alt="screencapture-localhost-5173-2026-09-04-14_08_07" src="https://github.com/user-attachments/assets/4e5a5d09-4946-470f-b64b-5f110e92c3a0" />
+<img width="1920" height="919" alt="screencapture-localhost-5173-2026-09-04-14_08_00" src="https://github.com/user-attachments/assets/7be278f2-cf5d-451e-a406-34b90b5702be" />
+<img width="1920" height="2287" alt="screencapture-localhost-5173-2026-09-04-14_07_51" src="https://github.com/user-attachments/assets/efbb7e95-8bbc-43d2-ab34-c0cce9da8f8c" />
+<img width="1920" height="3202" alt="screencapture-localhost-5173-2026-09-04-14_07_27" src="https://github.com/user-attachments/assets/23e33769-8fa5-47bf-9847-2e609ed54745" />
+<img width="1920" height="2494" alt="screencapture-localhost-5173-2026-09-04-14_07_14" src="https://github.com/user-attachments/assets/edf3f571-2cea-4c64-baf9-5c57891fd232" />
+<img width="1920" height="2485" alt="screencapture-localhost-5173-2026-09-04-14_06_58" src="https://github.com/user-attachments/assets/c3593b01-6fd2-4ab1-a729-128f5829b18c" />
+<img width="1920" height="2974" alt="screencapture-localhost-5173-2026-09-04-14_06_51" src="https://github.com/user-attachments/assets/41449773-f325-4288-a8a5-e8fe9f6b06a6" />
+<img width="1920" height="2796" alt="screencapture-localhost-5173-2026-09-04-14_06_32" src="https://github.com/user-attachments/assets/d054646d-bbab-43db-a2cd-7d7ccba5c5b8" />
+<img width="1920" height="2339" alt="screencapture-localhost-5173-2026-09-04-14_06_24" src="https://github.com/user-attachments/assets/5a203ac6-e10b-470d-a929-257e783a2be8" />
+<img width="1920" height="1704" alt="screencapture-localhost-5173-2026-09-04-14_06_12" src="https://github.com/user-attachments/assets/b7045730-4c06-415f-8e42-f4430be6d0ee" />
+<img width="1920" height="2149" alt="screencapture-localhost-5173-2026-09-04-14_06_04" src="https://github.com/user-attachments/assets/bb4ffee2-6f93-4306-9de5-1c725240ff02" />
+<img width="1920" height="3054" alt="screencapture-localhost-5173-2026-09-04-14_05_53" src="https://github.com/user-attachments/assets/2ba93b9d-0b5a-4568-aea6-731fe84e6594" />
+<img width="1920" height="2718" alt="screencapture-localhost-5173-2026-09-04-14_05_42" src="https://github.com/user-attachments/assets/9b3d7b03-252b-4807-96ca-83731188bbed" />
+
+
