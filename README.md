@@ -172,6 +172,7 @@ data/templates.js  ──▶  Gallery ──▶ TemplateCard ──▶ 템플릿
 
 ## 결과물
 
+<img width="1920" height="5725" alt="screencapture-localhost-5173-2026-09-04-14_04_42" src="https://github.com/user-attachments/assets/7877f2f4-6f7b-4dad-b4f3-1d514b61f2a9" />
 <img width="1920" height="3646" alt="screencapture-localhost-5173-2026-09-04-14_08_36" src="https://github.com/user-attachments/assets/d43bcd20-68fb-43c3-adae-a080d7bb850d" />
 <img width="1920" height="3605" alt="screencapture-localhost-5173-2026-09-04-14_08_30" src="https://github.com/user-attachments/assets/c09053f6-dd90-4224-b5ce-fff302444930" />
 <img width="1920" height="3306" alt="screencapture-localhost-5173-2026-09-04-14_08_22" src="https://github.com/user-attachments/assets/e22340a0-64c4-4866-a58e-376d429fe43e" />
