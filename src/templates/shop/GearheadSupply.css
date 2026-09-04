@@ -1,0 +1,176 @@
+/* GEARHEAD SUPPLY — 브루탈리스트 스트리트웨어.
+   노출된 그리드 괘선, 모노스페이스 전면, 형광 라임 액센트,
+   카드 대신 표(table)형 상품 리스트.                              */
+
+.t-gear {
+  container-type: inline-size;
+  --gr-paper: #edede7;
+  --gr-ink: #0b0b0b;
+  --gr-acid: #ccff00;
+  --gr-red: #ff3b00;
+  --gr-grid: rgba(11, 11, 11, 0.09);
+
+  background: var(--gr-paper);
+  color: var(--gr-ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+  position: relative;
+}
+.t-gear *, .t-gear *::before, .t-gear *::after { box-sizing: border-box; }
+.t-gear h1, .t-gear h2, .t-gear h3, .t-gear p { margin: 0; }
+
+/* 노출된 컬럼 괘선 */
+.t-gear__rules {
+  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background-image: repeating-linear-gradient(to right, var(--gr-grid) 0 1px, transparent 1px calc(100% / 12));
+  background-size: 100% 100%;
+}
+
+/* ---------------- ticker ---------------- */
+.t-gear__ticker {
+  position: relative; z-index: 2;
+  background: var(--gr-ink); color: var(--gr-acid);
+  border-bottom: 2px solid var(--gr-ink);
+  overflow: hidden; padding: 0.45rem 0;
+}
+.t-gear__tickerTrack { display: flex; gap: 2.5rem; width: max-content; animation: gr-run 18s linear infinite; }
+.t-gear__tickerTrack span { white-space: nowrap; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; }
+@keyframes gr-run { to { transform: translateX(-50%); } }
+
+/* ---------------- nav ---------------- */
+.t-gear__nav {
+  position: relative; z-index: 2;
+  display: flex; align-items: stretch; justify-content: space-between;
+  border-bottom: 2px solid var(--gr-ink);
+}
+.t-gear__brand {
+  font-family: "Archivo Black", sans-serif; font-size: 1.15rem;
+  letter-spacing: -0.02em; padding: 1rem 2.5cqw;
+  border-right: 2px solid var(--gr-ink);
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.t-gear__brand b { background: var(--gr-ink); color: var(--gr-acid); padding: 0.1rem 0.4rem; }
+.t-gear__navLinks { display: flex; }
+.t-gear__navLinks a {
+  display: flex; align-items: center; padding: 1rem 1.4cqw;
+  border-left: 1px solid var(--gr-grid);
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: inherit; text-decoration: none; white-space: nowrap;
+  transition: background 0.18s, color 0.18s;
+}
+.t-gear__navLinks a:hover { background: var(--gr-ink); color: var(--gr-acid); }
+.t-gear__cart { background: var(--gr-acid); border-left: 2px solid var(--gr-ink); }
+
+/* ---------------- hero ---------------- */
+.t-gear__hero {
+  position: relative; z-index: 2;
+  border-bottom: 2px solid var(--gr-ink);
+  display: grid; grid-template-columns: 8fr 4fr;
+}
+.t-gear__heroMain { padding: 3.5cqw 2.5cqw 2.5cqw; border-right: 2px solid var(--gr-ink); }
+.t-gear__kicker {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.8rem;
+}
+.t-gear__kicker span { border: 1px solid var(--gr-ink); padding: 0.2rem 0.5rem; }
+.t-gear__kicker span:first-child { background: var(--gr-red); color: var(--gr-paper); border-color: var(--gr-red); }
+.t-gear__display {
+  font-family: "Anton", sans-serif; font-weight: 400;
+  font-size: clamp(2.6rem, 11cqw, 9.5rem);
+  line-height: 0.82; letter-spacing: -0.02em; text-transform: uppercase;
+}
+.t-gear__display .out {
+  -webkit-text-stroke: 2px var(--gr-ink); color: transparent;
+  display: block;
+}
+.t-gear__display .fill { display: block; }
+.t-gear__display .fill em { font-style: normal; background: var(--gr-acid); padding: 0 0.1em; }
+.t-gear__kr {
+  font-family: "Do Hyeon", sans-serif; font-size: clamp(0.95rem, 1.6cqw, 1.3rem);
+  letter-spacing: -0.01em; margin-top: 2rem; max-width: 40ch; line-height: 1.7;
+}
+.t-gear__heroSide { display: flex; flex-direction: column; }
+.t-gear__spec {
+  padding: 1.3cqw 2cqw; border-bottom: 1px solid var(--gr-grid);
+  display: flex; justify-content: space-between; gap: 1rem;
+  font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.t-gear__spec b { font-weight: 700; }
+.t-gear__swatchBox { flex: 1; display: grid; grid-template-columns: 1fr 1fr; }
+.t-gear__swatchBox i { border-left: 1px solid var(--gr-grid); border-top: 1px solid var(--gr-grid); min-height: 6cqw; }
+.t-gear__swatchBox i:nth-child(1) { background: var(--gr-ink); }
+.t-gear__swatchBox i:nth-child(2) { background: var(--gr-acid); }
+.t-gear__swatchBox i:nth-child(3) { background: var(--gr-red); }
+.t-gear__swatchBox i:nth-child(4) { background: repeating-linear-gradient(45deg, #0b0b0b 0 6px, #edede7 6px 12px); }
+
+/* ---------------- product table ---------------- */
+.t-gear__tableWrap { position: relative; z-index: 2; border-bottom: 2px solid var(--gr-ink); }
+.t-gear__tableHead {
+  display: grid; grid-template-columns: 5rem 1fr 8rem 7rem 6rem;
+  background: var(--gr-ink); color: var(--gr-paper);
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.t-gear__tableHead span { padding: 0.6rem 1rem; border-right: 1px solid rgba(237,237,231,0.2); }
+.t-gear__row {
+  display: grid; grid-template-columns: 5rem 1fr 8rem 7rem 6rem;
+  align-items: center;
+  border-bottom: 1px solid var(--gr-grid);
+  text-decoration: none; color: inherit;
+  transition: background 0.16s;
+}
+.t-gear__row:hover { background: var(--gr-ink); color: var(--gr-paper); }
+.t-gear__row:hover .t-gear__cellName b { color: var(--gr-acid); }
+.t-gear__row > * { padding: 1.05rem 1rem; border-right: 1px solid var(--gr-grid); }
+.t-gear__cellNo { font-size: 0.68rem; opacity: 0.6; }
+.t-gear__cellName b { font-family: "Do Hyeon", sans-serif; font-weight: 400; font-size: 1.02rem; letter-spacing: 0.01em; display: block; }
+.t-gear__cellName small { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; }
+.t-gear__cellSize { font-size: 0.68rem; letter-spacing: 0.1em; }
+.t-gear__cellPrice { font-family: "Archivo Black", sans-serif; font-size: 0.92rem; letter-spacing: -0.02em; }
+.t-gear__cellBuy { text-align: center; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; background: var(--gr-acid); color: var(--gr-ink); border-right: none; }
+.t-gear__row--sold .t-gear__cellBuy { background: transparent; opacity: 0.4; text-decoration: line-through; }
+
+/* ---------------- drop banner ---------------- */
+.t-gear__drop {
+  position: relative; z-index: 2;
+  background: var(--gr-ink); color: var(--gr-paper);
+  padding: 3.5cqw 2.5cqw;
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+}
+.t-gear__dropTitle { font-family: "Anton", sans-serif; font-size: clamp(1.5rem, 4.4cqw, 3.4rem); text-transform: uppercase; line-height: 0.9; }
+.t-gear__dropTitle em { font-style: normal; color: var(--gr-acid); }
+.t-gear__dropMeta { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.6; margin-top: 1rem; }
+.t-gear__dropBtn {
+  background: var(--gr-acid); color: var(--gr-ink);
+  padding: 1.1rem 2rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap; border: 2px solid var(--gr-acid);
+  transition: background 0.2s, color 0.2s;
+}
+.t-gear__dropBtn:hover { background: transparent; color: var(--gr-acid); }
+
+/* ---------------- footer ---------------- */
+.t-gear__footer {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.t-gear__fCol { padding: 2.5cqw 2cqw; border-right: 1px solid var(--gr-grid); }
+.t-gear__fCol:last-child { border-right: none; }
+.t-gear__fCol b { display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.9rem; }
+.t-gear__fCol span { display: block; font-size: 0.74rem; opacity: 0.65; line-height: 2; }
+
+@container (max-width: 900px) {
+  .t-gear__hero { grid-template-columns: 1fr; }
+  .t-gear__heroMain { border-right: none; border-bottom: 2px solid var(--gr-ink); }
+  .t-gear__navLinks a:not(.t-gear__cart) { display: none; }
+  .t-gear__tableHead, .t-gear__row { grid-template-columns: 1fr 6rem 5rem; }
+  .t-gear__tableHead span:nth-child(1), .t-gear__row > .t-gear__cellNo,
+  .t-gear__tableHead span:nth-child(3), .t-gear__row > .t-gear__cellSize { display: none; }
+  .t-gear__footer { grid-template-columns: 1fr 1fr; }
+  .t-gear__fCol { border-bottom: 1px solid var(--gr-grid); }
+  .t-gear__drop { grid-template-columns: 1fr; }
+}
+@container (max-width: 520px) {
+  .t-gear__rules { background-image: repeating-linear-gradient(to right, var(--gr-grid) 0 1px, transparent 1px calc(100% / 4)); }
+  .t-gear__footer { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,152 @@
+/* TOWN SQUARE — 일반 커뮤니티 포럼. 밝고 밀도 높은 3분할.
+   좌: 채널 / 중: 피드 / 우: 랭킹·위젯. 정보를 많이, 정확히.      */
+
+.t-town {
+  container-type: inline-size;
+  --tw-bg: #f4f6f8;
+  --tw-panel: #ffffff;
+  --tw-ink: #1a1e25;
+  --tw-mute: #6b7480;
+  --tw-teal: #0d7d76;
+  --tw-amber: #d97706;
+  --tw-line: #e3e7ec;
+
+  background: var(--tw-bg);
+  color: var(--tw-ink);
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+.t-town *, .t-town *::before, .t-town *::after { box-sizing: border-box; }
+.t-town h1, .t-town h2, .t-town h3, .t-town p { margin: 0; }
+
+.t-town__kr { font-family: "IBM Plex Sans KR", sans-serif; }
+
+/* ---------------- header ---------------- */
+.t-town__hd {
+  display: flex; align-items: center; gap: 1.2rem;
+  padding: 0.85rem 2.5cqw; background: var(--tw-panel);
+  border-bottom: 1px solid var(--tw-line);
+  position: sticky; top: 0; z-index: 10;
+}
+.t-town__logo {
+  font-family: "Chivo", sans-serif; font-weight: 700; font-size: 1.05rem;
+  letter-spacing: -0.03em; display: flex; align-items: center; gap: 0.45rem; white-space: nowrap;
+}
+.t-town__logo i { width: 20px; height: 20px; border-radius: 6px; background: var(--tw-teal); display: inline-block; }
+.t-town__search {
+  flex: 1; max-width: 420px; display: flex; align-items: center; gap: 0.5rem;
+  background: var(--tw-bg); border: 1px solid var(--tw-line); border-radius: 8px;
+  padding: 0.5rem 0.8rem; color: var(--tw-mute); font-size: 0.84rem;
+}
+.t-town__hdRight { margin-left: auto; display: flex; align-items: center; gap: 0.7rem; }
+.t-town__hdBtn {
+  background: var(--tw-teal); color: #fff; border-radius: 8px;
+  padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 700; text-decoration: none; white-space: nowrap;
+}
+.t-town__avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(140deg, #9fd0cc, #0d7d76); }
+
+/* ---------------- 3 column ---------------- */
+.t-town__body { display: grid; grid-template-columns: 13rem 1fr 16rem; gap: 1.2rem; padding: 1.2rem 2.5cqw 2.5cqw; align-items: start; }
+
+/* 좌: 채널 */
+.t-town__side { position: sticky; top: 4.2rem; display: flex; flex-direction: column; gap: 1rem; }
+.t-town__panel { background: var(--tw-panel); border: 1px solid var(--tw-line); border-radius: 10px; overflow: hidden; }
+.t-town__panelHead {
+  padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--tw-line);
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tw-mute);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.t-town__chan {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.55rem 0.9rem; text-decoration: none; color: var(--tw-ink);
+  font-size: 0.86rem; transition: background 0.18s;
+}
+.t-town__chan:hover { background: var(--tw-bg); }
+.t-town__chan--on { background: #e6f4f2; color: var(--tw-teal); font-weight: 700; box-shadow: inset 3px 0 0 var(--tw-teal); }
+.t-town__chan span:last-child { margin-left: auto; font-size: 0.72rem; color: var(--tw-mute); }
+.t-town__dot { width: 8px; height: 8px; border-radius: 3px; display: inline-block; }
+
+/* 중: 피드 */
+.t-town__feedTabs { display: flex; gap: 0.4rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+.t-town__tab {
+  background: var(--tw-panel); border: 1px solid var(--tw-line); border-radius: 999px;
+  padding: 0.4rem 0.95rem; font-size: 0.8rem; color: var(--tw-mute);
+  text-decoration: none; transition: all 0.2s;
+}
+.t-town__tab:hover { color: var(--tw-ink); }
+.t-town__tab--on { background: var(--tw-ink); border-color: var(--tw-ink); color: #fff; font-weight: 700; }
+
+.t-town__post {
+  display: grid; grid-template-columns: 3rem 1fr; gap: 0.9rem;
+  background: var(--tw-panel); border: 1px solid var(--tw-line); border-bottom: none;
+  padding: 0.95rem 1.1rem; text-decoration: none; color: inherit;
+  transition: background 0.18s;
+}
+.t-town__post:first-of-type { border-radius: 10px 10px 0 0; }
+.t-town__post:last-of-type { border-bottom: 1px solid var(--tw-line); border-radius: 0 0 10px 10px; }
+.t-town__post:hover { background: #fbfcfd; }
+.t-town__vote { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; padding-top: 0.15rem; }
+.t-town__vote b { font-family: "Chivo", sans-serif; font-weight: 700; font-size: 0.92rem; letter-spacing: -0.02em; }
+.t-town__vote span { font-size: 0.62rem; color: var(--tw-mute); }
+.t-town__voteUp { color: var(--tw-amber); font-size: 0.8rem; line-height: 1; }
+.t-town__postTitle {
+  font-family: "IBM Plex Sans KR", sans-serif; font-weight: 600;
+  font-size: 0.98rem; letter-spacing: -0.02em; line-height: 1.45;
+}
+.t-town__post:hover .t-town__postTitle { color: var(--tw-teal); }
+.t-town__postMeta { display: flex; gap: 0.7rem; flex-wrap: wrap; align-items: center; margin-top: 0.4rem; font-size: 0.76rem; color: var(--tw-mute); }
+.t-town__chip {
+  font-size: 0.68rem; font-weight: 700; border-radius: 5px; padding: 0.1rem 0.42rem;
+  background: #eef1f4; color: #4b5563;
+}
+.t-town__chip--hot { background: #fef0e7; color: var(--tw-amber); }
+.t-town__chip--notice { background: #e6f4f2; color: var(--tw-teal); }
+.t-town__thumb { width: 62px; height: 46px; border-radius: 6px; margin-left: auto; flex-shrink: 0; }
+.t-town__t1 { background: linear-gradient(140deg, #b8d8ff, #2563eb); }
+.t-town__t2 { background: linear-gradient(140deg, #ffd9b0, #ea580c); }
+.t-town__t3 { background: linear-gradient(140deg, #c6f0e6, #0d7d76); }
+
+/* 우: 위젯 */
+.t-town__rank {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.5rem 0.9rem; text-decoration: none; color: inherit; font-size: 0.84rem;
+  transition: background 0.18s;
+}
+.t-town__rank:hover { background: var(--tw-bg); }
+.t-town__rankNo {
+  font-family: "Chivo", sans-serif; font-weight: 700; font-size: 0.82rem;
+  width: 18px; color: var(--tw-mute);
+}
+.t-town__rank:nth-child(2) .t-town__rankNo, .t-town__rank:nth-child(3) .t-town__rankNo, .t-town__rank:nth-child(4) .t-town__rankNo { color: var(--tw-amber); }
+.t-town__rankName { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: "IBM Plex Sans KR", sans-serif; }
+.t-town__rankVal { font-size: 0.74rem; color: var(--tw-mute); }
+
+.t-town__stat { padding: 0.9rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.t-town__stat div b { display: block; font-family: "Chivo", sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: -0.03em; color: var(--tw-teal); }
+.t-town__stat div span { font-size: 0.72rem; color: var(--tw-mute); }
+
+.t-town__cta { padding: 1rem; text-align: center; }
+.t-town__cta p { font-size: 0.82rem; color: var(--tw-mute); margin-bottom: 0.8rem; }
+.t-town__ctaBtn {
+  display: block; background: var(--tw-ink); color: #fff; border-radius: 8px;
+  padding: 0.6rem; font-size: 0.84rem; font-weight: 700; text-decoration: none;
+}
+
+.t-town__ft {
+  padding: 1.5rem 2.5cqw; border-top: 1px solid var(--tw-line); background: var(--tw-panel);
+  display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: space-between;
+  font-size: 0.76rem; color: var(--tw-mute);
+}
+
+@container (max-width: 1000px) {
+  .t-town__body { grid-template-columns: 12rem 1fr; }
+  .t-town__widgets { display: none; }
+}
+@container (max-width: 680px) {
+  .t-town__body { grid-template-columns: 1fr; }
+  .t-town__side { position: static; }
+  .t-town__search { display: none; }
+  .t-town__thumb { display: none; }
+}

@@ -1,0 +1,173 @@
+/* STUDY CIRCLE — 스터디·클럽 모집. 모눈 노트 배경, 형광펜 하이라이트,
+   출석 체크 그리드, 볼펜 색 액센트.                                */
+
+.t-sc {
+  container-type: inline-size;
+  --sc-paper: #fcfcf7;
+  --sc-grid: #e2e7f0;
+  --sc-ink: #292f39;
+  --sc-mute: #767f8d;
+  --sc-pen: #2f4fd0;
+  --sc-hl: #fff07a;
+  --sc-pink: #ffb3c6;
+  --sc-green: #7fd6a2;
+
+  background:
+    linear-gradient(var(--sc-grid) 1px, transparent 1px) 0 0 / 100% 26px,
+    linear-gradient(90deg, var(--sc-grid) 1px, transparent 1px) 0 0 / 26px 100%,
+    var(--sc-paper);
+  color: var(--sc-ink);
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  overflow: hidden;
+}
+.t-sc *, .t-sc *::before, .t-sc *::after { box-sizing: border-box; }
+.t-sc h1, .t-sc h2, .t-sc h3, .t-sc p { margin: 0; }
+
+.t-sc__mono { font-family: "Courier Prime", monospace; }
+
+/* ---------------- nav ---------------- */
+.t-sc__nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.4rem 4cqw; border-bottom: 2px solid var(--sc-ink);
+  background: rgba(252,252,247,0.9);
+}
+.t-sc__logo {
+  font-family: "Song Myung", serif; font-size: 1.4rem; letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.t-sc__logo i {
+  width: 18px; height: 18px; border: 2.5px solid var(--sc-pen); border-radius: 50%;
+  display: inline-block;
+}
+.t-sc__menu { display: flex; gap: 1.8rem; font-size: 0.9rem; }
+.t-sc__menu a { color: var(--sc-mute); text-decoration: none; transition: color 0.25s; position: relative; }
+.t-sc__menu a:hover { color: var(--sc-ink); }
+.t-sc__menu a:hover::after {
+  content: ""; position: absolute; left: -2px; right: -2px; bottom: 2px; height: 8px;
+  background: var(--sc-hl); z-index: -1;
+}
+.t-sc__navBtn {
+  font-family: "Courier Prime", monospace; font-size: 0.82rem;
+  border: 2px solid var(--sc-ink); padding: 0.45rem 1.1rem;
+  text-decoration: none; color: var(--sc-ink); background: var(--sc-paper);
+  box-shadow: 3px 3px 0 var(--sc-ink); white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.t-sc__navBtn:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--sc-ink); }
+
+/* ---------------- hero ---------------- */
+.t-sc__hero { padding: 5cqw 4cqw 3cqw; display: grid; grid-template-columns: 1.3fr 1fr; gap: 4cqw; align-items: center; }
+.t-sc__kicker {
+  font-family: "Courier Prime", monospace; font-size: 0.78rem;
+  letter-spacing: 0.18em; color: var(--sc-pen); text-transform: uppercase;
+}
+.t-sc__title {
+  font-family: "Song Myung", serif;
+  font-size: clamp(1.9rem, 5.4cqw, 4.4rem); line-height: 1.28; letter-spacing: -0.04em;
+  margin: 1.4rem 0 1.4rem;
+  animation: sc-in 0.9s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes sc-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.t-sc__title mark {
+  background: linear-gradient(transparent 58%, var(--sc-hl) 58%);
+  color: inherit; padding: 0 0.06em;
+}
+.t-sc__lede { color: var(--sc-mute); max-width: 40ch; }
+.t-sc__heroBtns { display: flex; gap: 0.8rem; margin-top: 2rem; flex-wrap: wrap; }
+.t-sc__btn {
+  font-family: "Courier Prime", monospace; font-size: 0.9rem;
+  padding: 0.7rem 1.5rem; text-decoration: none; border: 2px solid var(--sc-ink);
+  box-shadow: 4px 4px 0 var(--sc-ink); transition: transform 0.2s, box-shadow 0.2s;
+}
+.t-sc__btn--pen { background: var(--sc-pen); color: #fff; }
+.t-sc__btn--paper { background: var(--sc-paper); color: var(--sc-ink); }
+.t-sc__btn:hover { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--sc-ink); }
+
+/* 출석 체크 카드 */
+.t-sc__attend {
+  border: 2px solid var(--sc-ink); background: var(--sc-paper);
+  padding: 1.6rem; box-shadow: 6px 7px 0 var(--sc-ink); transform: rotate(-1.2deg);
+}
+.t-sc__attendHead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+.t-sc__attendHead b { font-family: "Song Myung", serif; font-size: 1.05rem; }
+.t-sc__attendHead span { font-family: "Courier Prime", monospace; font-size: 0.74rem; color: var(--sc-mute); }
+.t-sc__dots { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.t-sc__dot {
+  aspect-ratio: 1; border: 1.5px solid var(--sc-grid); border-radius: 4px;
+  display: grid; place-items: center; font-size: 0.7rem; color: var(--sc-mute);
+}
+.t-sc__dot--on { background: var(--sc-green); border-color: var(--sc-ink); color: var(--sc-ink); }
+.t-sc__dot--miss { background: var(--sc-pink); border-color: var(--sc-ink); }
+.t-sc__attendFoot {
+  margin-top: 1rem; padding-top: 0.8rem; border-top: 1.5px dashed var(--sc-grid);
+  display: flex; justify-content: space-between; font-family: "Courier Prime", monospace; font-size: 0.76rem;
+}
+
+/* ---------------- group cards ---------------- */
+.t-sc__section { padding: 3cqw 4cqw 5cqw; }
+.t-sc__secHead { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 2.4rem; flex-wrap: wrap; }
+.t-sc__secTitle { font-family: "Song Myung", serif; font-size: clamp(1.3rem, 3cqw, 2.2rem); letter-spacing: -0.03em; }
+.t-sc__filter { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.t-sc__filter a {
+  font-family: "Courier Prime", monospace; font-size: 0.78rem;
+  border: 1.5px solid var(--sc-grid); padding: 0.25rem 0.7rem;
+  text-decoration: none; color: var(--sc-mute); background: var(--sc-paper);
+  transition: all 0.2s;
+}
+.t-sc__filter a:hover { border-color: var(--sc-ink); color: var(--sc-ink); }
+.t-sc__filter a.on { background: var(--sc-ink); color: var(--sc-paper); border-color: var(--sc-ink); }
+
+.t-sc__groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4cqw; }
+.t-sc__group {
+  background: var(--sc-paper); border: 2px solid var(--sc-ink);
+  padding: 1.6rem 1.5rem; position: relative;
+  display: flex; flex-direction: column; gap: 0.9rem;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+  text-decoration: none; color: inherit;
+}
+.t-sc__group:hover { transform: translate(-3px, -4px); box-shadow: 7px 8px 0 var(--sc-ink); }
+.t-sc__tape {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-2deg);
+  background: var(--sc-hl); border: 1.5px solid var(--sc-ink);
+  font-family: "Courier Prime", monospace; font-size: 0.7rem;
+  padding: 0.1rem 0.8rem; white-space: nowrap;
+}
+.t-sc__tape--closed { background: var(--sc-grid); color: var(--sc-mute); }
+.t-sc__groupTitle { font-family: "Song Myung", serif; font-size: 1.2rem; letter-spacing: -0.03em; line-height: 1.4; margin-top: 0.4rem; }
+.t-sc__groupDesc { font-size: 0.86rem; color: var(--sc-mute); }
+.t-sc__rows { display: flex; flex-direction: column; gap: 0.35rem; font-family: "Courier Prime", monospace; font-size: 0.78rem; }
+.t-sc__rows span { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px dotted var(--sc-grid); padding-bottom: 0.2rem; }
+.t-sc__rows span b { font-weight: 400; color: var(--sc-mute); }
+.t-sc__members { display: flex; align-items: center; gap: 0.4rem; margin-top: auto; padding-top: 0.9rem; }
+.t-sc__mAvatar { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--sc-ink); margin-left: -8px; }
+.t-sc__mAvatar:first-child { margin-left: 0; }
+.t-sc__mAvatar--1 { background: var(--sc-pink); }
+.t-sc__mAvatar--2 { background: var(--sc-green); }
+.t-sc__mAvatar--3 { background: var(--sc-hl); }
+.t-sc__mAvatar--4 { background: #b8c8ff; }
+.t-sc__mCount { font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--sc-mute); margin-left: 0.4rem; }
+
+/* ---------------- cta ---------------- */
+.t-sc__cta {
+  margin: 0 4cqw 5cqw; border: 2px solid var(--sc-ink); background: var(--sc-paper);
+  padding: 3.5cqw 3cqw; text-align: center; box-shadow: 8px 9px 0 var(--sc-ink);
+}
+.t-sc__ctaTitle { font-family: "Song Myung", serif; font-size: clamp(1.4rem, 3.4cqw, 2.4rem); letter-spacing: -0.035em; margin-bottom: 0.9rem; }
+.t-sc__ctaTitle mark { background: linear-gradient(transparent 58%, var(--sc-pink) 58%); }
+.t-sc__ctaSub { color: var(--sc-mute); max-width: 46ch; margin: 0 auto 1.8rem; }
+
+.t-sc__ft {
+  padding: 0 4cqw 4cqw; display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-family: "Courier Prime", monospace; font-size: 0.78rem; color: var(--sc-mute);
+}
+
+@container (max-width: 900px) {
+  .t-sc__hero { grid-template-columns: 1fr; }
+  .t-sc__groups { grid-template-columns: 1fr 1fr; }
+  .t-sc__menu { display: none; }
+}
+@container (max-width: 560px) {
+  .t-sc__groups { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,176 @@
+/* SUMMIT DECK — 컨퍼런스. 다크 미니멀, 스위스 그리드, 헤어라인.
+   그라디언트 없이 여백과 위계로만 만든다. 액센트는 아이스 블루 하나. */
+
+.t-summit {
+  container-type: inline-size;
+  --sm-bg: #0d0e11;
+  --sm-bg2: #14161a;
+  --sm-text: #eceef1;
+  --sm-mute: #6f7680;
+  --sm-ice: #7fd8ff;
+  --sm-line: rgba(236, 238, 241, 0.12);
+
+  background: var(--sm-bg);
+  color: var(--sm-text);
+  font-family: "Karla", sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  overflow: hidden;
+}
+.t-summit *, .t-summit *::before, .t-summit *::after { box-sizing: border-box; }
+.t-summit h1, .t-summit h2, .t-summit h3, .t-summit p { margin: 0; }
+
+.t-summit__label {
+  font-family: "Courier Prime", monospace; font-size: 0.68rem;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--sm-mute);
+}
+
+/* ---------------- nav ---------------- */
+.t-summit__nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.4rem 4cqw; border-bottom: 1px solid var(--sm-line);
+}
+.t-summit__logo {
+  font-family: "Unbounded", sans-serif; font-weight: 700;
+  font-size: 1rem; letter-spacing: -0.03em;
+}
+.t-summit__logo i { color: var(--sm-ice); font-style: normal; }
+.t-summit__menu { display: flex; gap: 1.7rem; }
+.t-summit__menu a {
+  font-family: "Courier Prime", monospace; font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--sm-mute); text-decoration: none; transition: color 0.25s;
+}
+.t-summit__menu a:hover { color: var(--sm-ice); }
+.t-summit__navBtn {
+  border: 1px solid var(--sm-ice); color: var(--sm-ice);
+  font-family: "Courier Prime", monospace; font-size: 0.7rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.55rem 1.1rem; text-decoration: none; white-space: nowrap;
+  transition: background 0.3s, color 0.3s;
+}
+.t-summit__navBtn:hover { background: var(--sm-ice); color: var(--sm-bg); }
+
+/* ---------------- hero ---------------- */
+.t-summit__hero {
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  border-bottom: 1px solid var(--sm-line);
+}
+.t-summit__heroMain { padding: 5cqw 4cqw; border-right: 1px solid var(--sm-line); }
+.t-summit__title {
+  font-family: "Unbounded", sans-serif; font-weight: 700;
+  font-size: clamp(2rem, 6.6cqw, 5.4rem); line-height: 0.98;
+  letter-spacing: -0.055em; margin: 2rem 0 0;
+}
+.t-summit__title span { display: block; }
+.t-summit__title .ice { color: var(--sm-ice); }
+.t-summit__titleKr {
+  font-family: "IBM Plex Sans KR", sans-serif; font-weight: 400;
+  font-size: clamp(0.95rem, 1.7cqw, 1.2rem); color: var(--sm-mute);
+  margin-top: 2rem; max-width: 44ch; line-height: 1.9;
+}
+.t-summit__heroTags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 2.4rem; }
+.t-summit__heroTags span {
+  font-family: "Courier Prime", monospace; font-size: 0.66rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid var(--sm-line); padding: 0.3rem 0.7rem; color: var(--sm-mute);
+}
+
+/* 카운트다운 */
+.t-summit__count { padding: 5cqw 4cqw; display: flex; flex-direction: column; justify-content: space-between; }
+.t-summit__countGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--sm-line); border: 1px solid var(--sm-line); margin-top: 1.6rem; }
+.t-summit__countCell { background: var(--sm-bg); padding: 1.6rem 1.2rem; text-align: center; }
+.t-summit__countCell b {
+  display: block; font-family: "Unbounded", sans-serif; font-weight: 700;
+  font-size: clamp(1.6rem, 3.6cqw, 2.8rem); line-height: 1; letter-spacing: -0.05em;
+  color: var(--sm-ice);
+}
+.t-summit__countCell span {
+  display: block; margin-top: 0.6rem;
+  font-family: "Courier Prime", monospace; font-size: 0.6rem;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--sm-mute);
+}
+.t-summit__venue { margin-top: 2.4rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.t-summit__venueRow { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--sm-line); font-size: 0.86rem; }
+.t-summit__venueRow b { color: var(--sm-mute); font-weight: 400; font-family: "Courier Prime", monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* ---------------- timetable ---------------- */
+.t-summit__section { padding: 5cqw 4cqw; border-bottom: 1px solid var(--sm-line); }
+.t-summit__secHead { display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3cqw; }
+.t-summit__secTitle {
+  font-family: "Unbounded", sans-serif; font-weight: 700;
+  font-size: clamp(1.3rem, 3cqw, 2.2rem); letter-spacing: -0.045em;
+}
+.t-summit__tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3cqw; }
+.t-summit__trackName {
+  font-family: "Courier Prime", monospace; font-size: 0.7rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding-bottom: 0.8rem; border-bottom: 2px solid var(--sm-ice); margin-bottom: 0.4rem;
+  display: flex; justify-content: space-between;
+}
+.t-summit__trackName em { font-style: normal; color: var(--sm-mute); }
+.t-summit__slot {
+  display: grid; grid-template-columns: 5.5rem 1fr; gap: 1.2rem;
+  padding: 1.3rem 0.8rem 1.3rem 0; border-bottom: 1px solid var(--sm-line);
+  text-decoration: none; color: inherit;
+  transition: background 0.25s, padding-left 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.t-summit__slot:hover { background: var(--sm-bg2); padding-left: 0.8rem; }
+.t-summit__slotTime { font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--sm-ice); letter-spacing: 0.06em; }
+.t-summit__slotTitle { font-family: "IBM Plex Sans KR", sans-serif; font-weight: 700; font-size: 0.98rem; letter-spacing: -0.02em; line-height: 1.45; }
+.t-summit__slotBy { font-size: 0.8rem; color: var(--sm-mute); margin-top: 0.3rem; }
+.t-summit__slot--break .t-summit__slotTitle { color: var(--sm-mute); font-weight: 400; }
+
+/* ---------------- speakers ---------------- */
+.t-summit__speakers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--sm-line); border: 1px solid var(--sm-line); }
+.t-summit__spk {
+  background: var(--sm-bg); padding: 2.4cqw 1.8cqw;
+  transition: background 0.3s;
+}
+.t-summit__spk:hover { background: var(--sm-bg2); }
+.t-summit__spkAvatar {
+  width: 100%; aspect-ratio: 1; margin-bottom: 1.2rem;
+  background: linear-gradient(150deg, #2b3138, #171a1e);
+  position: relative; overflow: hidden;
+}
+.t-summit__spkAvatar::after {
+  content: ""; position: absolute; left: 22%; top: 18%; width: 56%; aspect-ratio: 1;
+  border-radius: 50%; background: linear-gradient(160deg, rgba(127,216,255,0.32), rgba(127,216,255,0.04));
+}
+.t-summit__spkName { font-family: "IBM Plex Sans KR", sans-serif; font-weight: 700; font-size: 0.98rem; letter-spacing: -0.02em; }
+.t-summit__spkRole { font-size: 0.8rem; color: var(--sm-mute); margin-top: 0.3rem; }
+
+/* ---------------- cta ---------------- */
+.t-summit__cta { padding: 6cqw 4cqw; text-align: center; }
+.t-summit__ctaTitle {
+  font-family: "Unbounded", sans-serif; font-weight: 700;
+  font-size: clamp(1.5rem, 4.4cqw, 3.4rem); letter-spacing: -0.055em; margin: 1.4rem 0 1rem;
+}
+.t-summit__ctaSub { color: var(--sm-mute); max-width: 46ch; margin: 0 auto 2.6rem; }
+.t-summit__ctaBtn {
+  display: inline-block; background: var(--sm-ice); color: var(--sm-bg);
+  font-family: "Courier Prime", monospace; font-size: 0.78rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 1.1rem 2.4rem; text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.t-summit__ctaBtn:hover { transform: translateY(-3px); }
+
+.t-summit__footer {
+  border-top: 1px solid var(--sm-line); padding: 2.2rem 4cqw;
+  display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-family: "Courier Prime", monospace; font-size: 0.68rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--sm-mute);
+}
+
+@container (max-width: 900px) {
+  .t-summit__hero { grid-template-columns: 1fr; }
+  .t-summit__heroMain { border-right: none; border-bottom: 1px solid var(--sm-line); }
+  .t-summit__tracks { grid-template-columns: 1fr; gap: 3cqw; }
+  .t-summit__speakers { grid-template-columns: 1fr 1fr; }
+  .t-summit__menu { display: none; }
+}
+@container (max-width: 520px) {
+  .t-summit__speakers { grid-template-columns: 1fr; }
+  .t-summit__countGrid { grid-template-columns: 1fr 1fr; }
+}

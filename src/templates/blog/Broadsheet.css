@@ -1,0 +1,172 @@
+/* BROADSHEET — 신문 1면. 뉴스프린트 종이색, 다단 조판,
+   세로 괘선, 드롭캡, 붉은 속보 태그.                              */
+
+.t-bs {
+  container-type: inline-size;
+  --bs-paper: #f7f4ec;
+  --bs-ink: #12110f;
+  --bs-red: #c8102e;
+  --bs-rule: rgba(18, 17, 15, 0.24);
+  --bs-mute: #5d5850;
+
+  background: var(--bs-paper);
+  color: var(--bs-ink);
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  line-height: 1.62;
+  overflow: hidden;
+}
+.t-bs *, .t-bs *::before, .t-bs *::after { box-sizing: border-box; }
+.t-bs h1, .t-bs h2, .t-bs h3, .t-bs h4, .t-bs p { margin: 0; }
+
+.t-bs__meta {
+  font-family: "Space Mono", monospace; font-size: 0.6rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+
+/* ---------------- masthead ---------------- */
+.t-bs__top {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 0.6rem 3cqw; border-bottom: 1px solid var(--bs-rule);
+  color: var(--bs-mute);
+}
+.t-bs__masthead { text-align: center; padding: 2.6cqw 3cqw 1.6cqw; }
+.t-bs__title {
+  font-family: "Abril Fatface", serif; font-weight: 400;
+  font-size: clamp(2.4rem, 10cqw, 8rem); line-height: 0.9;
+  letter-spacing: -0.015em;
+}
+.t-bs__sub {
+  margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 1.2rem;
+  color: var(--bs-mute);
+}
+.t-bs__sub::before, .t-bs__sub::after { content: ""; height: 1px; flex: 1; max-width: 20cqw; background: var(--bs-rule); }
+.t-bs__rules { border-top: 3px solid var(--bs-ink); border-bottom: 1px solid var(--bs-ink); height: 5px; margin: 0 3cqw; }
+
+.t-bs__nav {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;
+  padding: 0.9rem 3cqw; border-bottom: 1px solid var(--bs-rule); margin: 0 3cqw;
+}
+.t-bs__nav a {
+  font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 0.82rem;
+  color: var(--bs-ink); text-decoration: none; letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.t-bs__nav a:hover { color: var(--bs-red); }
+
+/* ---------------- front page grid ---------------- */
+.t-bs__front {
+  display: grid; grid-template-columns: 2.4fr 1fr 1.1fr;
+  margin: 0 3cqw; padding: 2.4cqw 0;
+  gap: 0;
+}
+.t-bs__col { padding: 0 1.8cqw; border-right: 1px solid var(--bs-rule); }
+.t-bs__col:first-child { padding-left: 0; }
+.t-bs__col:last-child { border-right: none; padding-right: 0; }
+
+.t-bs__flag {
+  display: inline-block; background: var(--bs-red); color: var(--bs-paper);
+  font-family: "Space Mono", monospace; font-size: 0.58rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.2rem 0.55rem; margin-bottom: 1rem;
+}
+.t-bs__lead {
+  font-family: "Noto Serif KR", serif; font-weight: 700;
+  font-size: clamp(1.6rem, 4.2cqw, 3.4rem); line-height: 1.14;
+  letter-spacing: -0.045em;
+  animation: bs-in 0.9s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes bs-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.t-bs__deck {
+  font-family: "DM Serif Display", serif; font-size: clamp(0.95rem, 1.7cqw, 1.25rem);
+  color: var(--bs-mute); margin-top: 1.1rem; line-height: 1.5;
+  padding-bottom: 1.2rem; border-bottom: 1px solid var(--bs-rule);
+}
+.t-bs__byline { margin: 1rem 0 1.4rem; color: var(--bs-mute); }
+
+.t-bs__photo {
+  aspect-ratio: 16 / 9; margin: 0 0 0.6rem;
+  background:
+    repeating-linear-gradient(0deg, rgba(18,17,15,0.06) 0 2px, transparent 2px 4px),
+    linear-gradient(140deg, #3d3a35, #8a837a 48%, #cdc7bb);
+  position: relative;
+}
+.t-bs__photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(60% 70% at 34% 30%, rgba(247,244,236,0.34), transparent 62%);
+}
+.t-bs__caption { font-family: "Space Mono", monospace; font-size: 0.58rem; color: var(--bs-mute); letter-spacing: 0.06em; line-height: 1.7; margin-bottom: 1.4rem; }
+
+.t-bs__body { column-count: 2; column-gap: 1.6cqw; column-rule: 1px solid var(--bs-rule); font-size: 0.95rem; }
+.t-bs__body p { margin-bottom: 0.9rem; text-align: justify; hyphens: auto; }
+.t-bs__body p:first-of-type::first-letter {
+  float: left; font-family: "Abril Fatface", serif;
+  font-size: 3.4em; line-height: 0.78; padding: 0.08em 0.12em 0 0; color: var(--bs-red);
+}
+
+/* 사이드 기사 */
+.t-bs__sideHead {
+  font-family: "Space Mono", monospace; font-size: 0.6rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding-bottom: 0.5rem; margin-bottom: 1.2rem;
+  border-bottom: 2px solid var(--bs-ink);
+}
+.t-bs__item { padding: 1rem 0; border-bottom: 1px dotted var(--bs-rule); display: block; text-decoration: none; color: inherit; }
+.t-bs__item:hover h4 { color: var(--bs-red); }
+.t-bs__item h4 {
+  font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 1rem;
+  letter-spacing: -0.035em; line-height: 1.36; transition: color 0.2s;
+}
+.t-bs__item p { font-size: 0.85rem; color: var(--bs-mute); margin-top: 0.4rem; }
+.t-bs__num {
+  font-family: "Abril Fatface", serif; font-size: 1.4rem; color: var(--bs-red);
+  float: left; margin-right: 0.6rem; line-height: 1;
+}
+
+/* 광고 박스 */
+.t-bs__ad {
+  border: 2px solid var(--bs-ink); padding: 1.4rem 1.2rem; text-align: center; margin-top: 1.6rem;
+}
+.t-bs__ad b { display: block; font-family: "Abril Fatface", serif; font-size: 1.5rem; line-height: 1.1; margin-bottom: 0.5rem; }
+.t-bs__ad span { font-family: "Space Mono", monospace; font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bs-mute); }
+
+/* ---------------- lower deck ---------------- */
+.t-bs__lower { margin: 0 3cqw; border-top: 3px double var(--bs-ink); padding: 2.4cqw 0; }
+.t-bs__lowerHead { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.8cqw; gap: 1rem; }
+.t-bs__lowerTitle { font-family: "DM Serif Display", serif; font-size: clamp(1.3rem, 2.8cqw, 2rem); }
+.t-bs__cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.t-bs__card { padding: 0 1.6cqw; border-right: 1px solid var(--bs-rule); text-decoration: none; color: inherit; }
+.t-bs__card:first-child { padding-left: 0; }
+.t-bs__card:last-child { border-right: none; padding-right: 0; }
+.t-bs__cardArt { aspect-ratio: 4/3; margin-bottom: 0.9rem; filter: grayscale(1) contrast(1.1); transition: filter 0.4s; }
+.t-bs__card:hover .t-bs__cardArt { filter: none; }
+.t-bs__cardArt--1 { background: linear-gradient(135deg, #6d3b3b, #d8c8b0); }
+.t-bs__cardArt--2 { background: linear-gradient(200deg, #2f4a52, #b9c9c2); }
+.t-bs__cardArt--3 { background: linear-gradient(160deg, #5a4a2e, #d5cbb2); }
+.t-bs__cardArt--4 { background: linear-gradient(120deg, #3a3550, #c3bcd0); }
+.t-bs__card h4 { font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 0.98rem; letter-spacing: -0.035em; line-height: 1.35; }
+.t-bs__card span { display: block; margin-top: 0.5rem; font-family: "Space Mono", monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bs-mute); }
+
+/* ---------------- footer ---------------- */
+.t-bs__footer {
+  margin: 0 3cqw; border-top: 1px solid var(--bs-ink);
+  padding: 1.8cqw 0 3cqw; display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  color: var(--bs-mute);
+}
+
+@container (max-width: 900px) {
+  .t-bs__front { grid-template-columns: 1fr 1fr; }
+  .t-bs__col:nth-child(1) { grid-column: span 2; border-right: none; padding: 0 0 2cqw; border-bottom: 1px solid var(--bs-rule); margin-bottom: 2cqw; }
+  .t-bs__col:nth-child(2) { padding-left: 0; }
+  .t-bs__cards { grid-template-columns: 1fr 1fr; gap: 2cqw 0; }
+  .t-bs__card:nth-child(2) { border-right: none; padding-right: 0; }
+  .t-bs__card:nth-child(3) { padding-left: 0; }
+}
+@container (max-width: 560px) {
+  .t-bs__body { column-count: 1; }
+  .t-bs__front { grid-template-columns: 1fr; }
+  .t-bs__col { grid-column: span 1 !important; border-right: none; padding: 0 0 1.6cqw; }
+  .t-bs__cards { grid-template-columns: 1fr; }
+  .t-bs__card { border-right: none; padding: 0 0 1.6cqw; }
+  .t-bs__nav { gap: 1rem; }
+}

@@ -1,0 +1,160 @@
+/* TABLE NO.9 — 파인다이닝 예약. 어두운 무드, 중앙 정렬 메뉴 조판,
+   테라코타 액센트, 인원·날짜·시간 3단 예약 인터페이스.            */
+
+.t-t9 {
+  container-type: inline-size;
+  --t9-bg: #141211;
+  --t9-bg2: #1c1917;
+  --t9-bone: #e9e2d5;
+  --t9-mute: #8b8177;
+  --t9-brick: #b45b3c;
+  --t9-line: rgba(233, 226, 213, 0.15);
+
+  background: var(--t9-bg);
+  color: var(--t9-bone);
+  font-family: "Work Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  overflow: hidden;
+}
+.t-t9 *, .t-t9 *::before, .t-t9 *::after { box-sizing: border-box; }
+.t-t9 h1, .t-t9 h2, .t-t9 h3, .t-t9 p { margin: 0; }
+
+.t-t9__label {
+  font-family: "Space Mono", monospace; font-size: 0.62rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--t9-brick);
+}
+
+/* ---------------- nav ---------------- */
+.t-t9__nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.6rem 5cqw; border-bottom: 1px solid var(--t9-line);
+}
+.t-t9__logo { font-family: "DM Serif Display", serif; font-size: 1.3rem; letter-spacing: 0.02em; }
+.t-t9__menu { display: flex; gap: 2rem; }
+.t-t9__menu a {
+  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--t9-mute); text-decoration: none; transition: color 0.3s;
+}
+.t-t9__menu a:hover { color: var(--t9-bone); }
+.t-t9__navBtn {
+  font-family: "Space Mono", monospace; font-size: 0.66rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border: 1px solid var(--t9-brick); color: var(--t9-brick);
+  padding: 0.6rem 1.2rem; text-decoration: none; white-space: nowrap;
+  transition: background 0.35s, color 0.35s;
+}
+.t-t9__navBtn:hover { background: var(--t9-brick); color: var(--t9-bg); }
+
+/* ---------------- hero ---------------- */
+.t-t9__hero {
+  position: relative; min-height: 52cqw; max-height: 620px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 6cqw 5cqw; overflow: hidden;
+  border-bottom: 1px solid var(--t9-line);
+}
+.t-t9__heroBg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(46% 42% at 50% 34%, rgba(180,91,60,0.32), transparent 64%),
+    linear-gradient(180deg, #221c19 0%, #141211 72%);
+}
+.t-t9__heroBg::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='130' height='130' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  opacity: 0.3; mix-blend-mode: overlay;
+}
+.t-t9__heroIn { position: relative; z-index: 1; }
+.t-t9__title {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2.4rem, 9cqw, 7rem); line-height: 1; letter-spacing: -0.01em;
+  margin: 1.8rem 0 0;
+  animation: t9-in 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+.t-t9__title small { display: block; font-size: 0.28em; letter-spacing: 0.5em; text-indent: 0.5em; color: var(--t9-mute); margin-top: 1.4rem; font-family: "Space Mono", monospace; text-transform: uppercase; }
+@keyframes t9-in { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+.t-t9__heroKr {
+  font-family: "Song Myung", serif; font-size: clamp(0.95rem, 1.8cqw, 1.25rem);
+  color: var(--t9-mute); margin-top: 2rem; line-height: 2.1;
+}
+.t-t9__heroBtn {
+  display: inline-block; margin-top: 2.6rem;
+  background: var(--t9-brick); color: #fff;
+  font-family: "Space Mono", monospace; font-size: 0.7rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 1.05rem 2.4rem; text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), background 0.35s;
+}
+.t-t9__heroBtn:hover { transform: translateY(-3px); background: var(--t9-bone); color: var(--t9-bg); }
+
+/* ---------------- course menu ---------------- */
+.t-t9__section { padding: 6cqw 5cqw; }
+.t-t9__secHead { text-align: center; margin-bottom: 4cqw; }
+.t-t9__secTitle { font-family: "DM Serif Display", serif; font-size: clamp(1.6rem, 3.8cqw, 2.8rem); margin-top: 1.2rem; }
+.t-t9__rule { width: 60px; height: 1px; background: var(--t9-brick); margin: 1.6rem auto 0; }
+
+.t-t9__course { max-width: 640px; margin: 0 auto; text-align: center; }
+.t-t9__dish { padding: 1.7rem 0; border-bottom: 1px solid var(--t9-line); }
+.t-t9__dish:last-child { border-bottom: none; }
+.t-t9__dishNo { font-family: "Space Mono", monospace; font-size: 0.6rem; letter-spacing: 0.24em; color: var(--t9-brick); }
+.t-t9__dishName {
+  font-family: "Song Myung", serif; font-size: clamp(1.05rem, 2.2cqw, 1.5rem);
+  letter-spacing: -0.01em; margin: 0.5rem 0 0.4rem;
+}
+.t-t9__dishEn { font-family: "Space Mono", monospace; font-size: 0.66rem; letter-spacing: 0.14em; color: var(--t9-mute); text-transform: uppercase; }
+.t-t9__dishDesc { color: var(--t9-mute); font-size: 0.9rem; margin-top: 0.7rem; }
+
+.t-t9__coursePrice {
+  text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--t9-line);
+}
+.t-t9__coursePrice b { font-family: "DM Serif Display", serif; font-size: clamp(1.4rem, 3cqw, 2rem); color: var(--t9-brick); }
+.t-t9__coursePrice span { display: block; color: var(--t9-mute); font-size: 0.84rem; margin-top: 0.5rem; }
+
+/* ---------------- reservation ---------------- */
+.t-t9__reserve { background: var(--t9-bg2); border-top: 1px solid var(--t9-line); border-bottom: 1px solid var(--t9-line); padding: 5cqw; }
+.t-t9__rsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; max-width: 1000px; margin: 0 auto; }
+.t-t9__rsCol h3 {
+  font-family: "Space Mono", monospace; font-size: 0.64rem;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--t9-mute);
+  padding-bottom: 0.8rem; border-bottom: 1px solid var(--t9-line); margin-bottom: 1.2rem;
+}
+.t-t9__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.t-t9__chip {
+  border: 1px solid var(--t9-line); padding: 0.55rem 0.95rem;
+  font-size: 0.8rem; cursor: pointer; transition: all 0.28s;
+  font-family: "Space Mono", monospace; letter-spacing: 0.06em;
+}
+.t-t9__chip:hover { border-color: var(--t9-bone); }
+.t-t9__chip--on { background: var(--t9-brick); border-color: var(--t9-brick); color: #fff; }
+.t-t9__chip--off { opacity: 0.3; text-decoration: line-through; cursor: not-allowed; }
+.t-t9__rsFoot { max-width: 1000px; margin: 3rem auto 0; text-align: center; }
+.t-t9__rsNote { color: var(--t9-mute); font-size: 0.82rem; margin-bottom: 1.6rem; }
+
+/* ---------------- info ---------------- */
+.t-t9__info { display: grid; grid-template-columns: repeat(4, 1fr); }
+.t-t9__infoCell { padding: 3.5cqw 2.5cqw; border-right: 1px solid var(--t9-line); }
+.t-t9__infoCell:last-child { border-right: none; }
+.t-t9__infoCell b {
+  display: block; font-family: "Space Mono", monospace; font-size: 0.6rem;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--t9-brick); margin-bottom: 0.9rem;
+}
+.t-t9__infoCell p { font-family: "Song Myung", serif; font-size: 0.95rem; line-height: 1.9; }
+
+.t-t9__ft {
+  border-top: 1px solid var(--t9-line); padding: 2.4rem 5cqw;
+  display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-family: "Space Mono", monospace; font-size: 0.62rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--t9-mute);
+}
+
+@container (max-width: 900px) {
+  .t-t9__menu { display: none; }
+  .t-t9__rsGrid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .t-t9__info { grid-template-columns: 1fr 1fr; }
+  .t-t9__infoCell:nth-child(2) { border-right: none; }
+  .t-t9__infoCell:nth-child(1), .t-t9__infoCell:nth-child(2) { border-bottom: 1px solid var(--t9-line); }
+}
+@container (max-width: 560px) {
+  .t-t9__info { grid-template-columns: 1fr; }
+  .t-t9__infoCell { border-right: none; border-bottom: 1px solid var(--t9-line); }
+}

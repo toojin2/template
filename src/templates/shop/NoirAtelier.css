@@ -1,0 +1,224 @@
+/* NOIR ATELIER — 럭셔리 패션. 잉크 블랙 + 아이보리 + 샴페인 골드.
+   비대칭 스플릿, 대형 보도니, 정적인 여백.                          */
+
+.t-noir {
+  container-type: inline-size;
+  --nr-ink: #0a0a0b;
+  --nr-ink2: #141416;
+  --nr-ivory: #f3efe7;
+  --nr-mute: #8b867d;
+  --nr-gold: #c9ae7c;
+  --nr-line: rgba(243, 239, 231, 0.14);
+
+  background: var(--nr-ink);
+  color: var(--nr-ivory);
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+.t-noir *,
+.t-noir *::before,
+.t-noir *::after { box-sizing: border-box; }
+
+.t-noir h1, .t-noir h2, .t-noir h3, .t-noir p { margin: 0; }
+
+.t-noir__label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--nr-gold);
+}
+
+/* ---------------- nav ---------------- */
+.t-noir__nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.6rem 4cqw;
+  border-bottom: 1px solid var(--nr-line);
+}
+.t-noir__logo {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.5rem; font-weight: 400; letter-spacing: 0.42em;
+  text-indent: 0.42em;
+}
+.t-noir__menu { display: flex; gap: 2.2rem; }
+.t-noir__menu a {
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--nr-mute); text-decoration: none; position: relative; padding-bottom: 3px;
+}
+.t-noir__menu a::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0;
+  background: var(--nr-gold); transition: width 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.t-noir__menu a:hover { color: var(--nr-ivory); }
+.t-noir__menu a:hover::after { width: 100%; }
+.t-noir__bag {
+  font-family: "Space Mono", monospace; font-size: 0.68rem;
+  letter-spacing: 0.18em; color: var(--nr-ivory);
+}
+
+/* ---------------- hero (asymmetric split) ---------------- */
+.t-noir__hero {
+  display: grid;
+  grid-template-columns: 43fr 57fr;
+  min-height: 78cqw;
+  max-height: 760px;
+  border-bottom: 1px solid var(--nr-line);
+}
+.t-noir__heroText {
+  padding: 6cqw 4cqw;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-right: 1px solid var(--nr-line);
+}
+.t-noir__title {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 6.4cqw, 5.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  margin-top: 2.4rem;
+  animation: nr-rise 1.1s cubic-bezier(0.16,1,0.3,1) both;
+}
+.t-noir__title i { font-style: italic; color: var(--nr-gold); }
+.t-noir__title .kr {
+  display: block;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 0.42em; letter-spacing: -0.02em; color: var(--nr-mute);
+  margin-top: 1.4rem; line-height: 1.7;
+}
+.t-noir__heroFoot { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-top: 3rem; }
+.t-noir__cta {
+  display: inline-block; padding: 1.05rem 2.2rem;
+  border: 1px solid var(--nr-gold); color: var(--nr-gold);
+  font-family: "Space Mono", monospace; font-size: 0.66rem;
+  letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none;
+  transition: background 0.45s cubic-bezier(0.16,1,0.3,1), color 0.45s;
+}
+.t-noir__cta:hover { background: var(--nr-gold); color: var(--nr-ink); }
+.t-noir__season { text-align: right; font-family: "Space Mono", monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--nr-mute); line-height: 2; }
+
+.t-noir__heroArt { position: relative; overflow: hidden; }
+.t-noir__figure {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(70% 60% at 62% 22%, rgba(201,174,124,0.30), transparent 62%),
+    linear-gradient(168deg, #26242a 0%, #131317 46%, #0a0a0b 100%);
+}
+.t-noir__figure::before {
+  content: ""; position: absolute;
+  left: 26%; top: 12%; width: 48%; bottom: -6%;
+  background: linear-gradient(180deg, rgba(243,239,231,0.16), rgba(243,239,231,0.02) 55%, transparent);
+  border-radius: 46% 46% 8% 8% / 30% 30% 4% 4%;
+  filter: blur(0.3px);
+  animation: nr-float 9s ease-in-out infinite alternate;
+}
+.t-noir__figure::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.3; mix-blend-mode: overlay;
+}
+.t-noir__figureTag {
+  position: absolute; left: 4cqw; bottom: 3cqw; z-index: 2;
+  font-family: "Space Mono", monospace; font-size: 0.6rem;
+  letter-spacing: 0.2em; color: var(--nr-ivory);
+  border-left: 1px solid var(--nr-gold); padding-left: 0.9rem; line-height: 1.9;
+}
+
+@keyframes nr-rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes nr-float { from { transform: translateY(0) rotate(-0.6deg); } to { transform: translateY(-18px) rotate(0.6deg); } }
+
+/* ---------------- marquee ---------------- */
+.t-noir__marquee {
+  border-bottom: 1px solid var(--nr-line);
+  overflow: hidden; padding: 1.1rem 0;
+}
+.t-noir__track {
+  display: flex; gap: 3.5rem; width: max-content;
+  animation: nr-scroll 26s linear infinite;
+}
+.t-noir__track span {
+  font-family: "Bodoni Moda", serif; font-style: italic;
+  font-size: 1.15rem; color: var(--nr-mute); white-space: nowrap;
+}
+.t-noir__track span::after { content: "◆"; margin-left: 3.5rem; font-size: 0.5rem; vertical-align: middle; color: var(--nr-gold); }
+@keyframes nr-scroll { to { transform: translateX(-50%); } }
+
+/* ---------------- lookbook ---------------- */
+.t-noir__section { padding: 7cqw 4cqw; }
+.t-noir__secHead { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 4cqw; flex-wrap: wrap; }
+.t-noir__secTitle {
+  font-family: "Bodoni Moda", serif; font-weight: 400;
+  font-size: clamp(1.6rem, 3.4cqw, 2.9rem); letter-spacing: -0.01em;
+}
+.t-noir__secTitle i { font-style: italic; color: var(--nr-gold); }
+
+.t-noir__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; }
+.t-noir__item:nth-child(2) { transform: translateY(4cqw); }
+.t-noir__item { text-decoration: none; color: inherit; display: block; }
+.t-noir__shot {
+  position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+  border: 1px solid var(--nr-line);
+}
+.t-noir__shot i {
+  position: absolute; inset: 0;
+  transition: transform 1.1s cubic-bezier(0.16,1,0.3,1), filter 0.8s;
+}
+.t-noir__item:hover .t-noir__shot i { transform: scale(1.05); filter: brightness(1.15); }
+.t-noir__s1 i { background: radial-gradient(60% 50% at 50% 26%, rgba(201,174,124,0.34), transparent 62%), linear-gradient(200deg, #2b2830, #101013); }
+.t-noir__s2 i { background: radial-gradient(58% 46% at 40% 30%, rgba(243,239,231,0.24), transparent 60%), linear-gradient(160deg, #1d222a, #0b0b0d); }
+.t-noir__s3 i { background: radial-gradient(64% 52% at 60% 34%, rgba(139,134,125,0.34), transparent 64%), linear-gradient(210deg, #302a26, #0d0c0c); }
+.t-noir__shot::after {
+  content: attr(data-no);
+  position: absolute; top: 1rem; left: 1rem;
+  font-family: "Space Mono", monospace; font-size: 0.58rem;
+  letter-spacing: 0.2em; color: var(--nr-ivory); opacity: 0.75;
+}
+.t-noir__meta { display: flex; justify-content: space-between; align-items: baseline; padding-top: 1.1rem; gap: 1rem; }
+.t-noir__name { font-family: "Nanum Myeongjo", serif; font-size: 1rem; letter-spacing: -0.01em; }
+.t-noir__name small { display: block; font-family: "Space Mono", monospace; font-size: 0.56rem; letter-spacing: 0.18em; color: var(--nr-mute); margin-top: 0.35rem; text-transform: uppercase; }
+.t-noir__price { font-family: "Bodoni Moda", serif; font-size: 1.05rem; color: var(--nr-gold); white-space: nowrap; }
+
+/* ---------------- editorial band ---------------- */
+.t-noir__band {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--nr-line); border-bottom: 1px solid var(--nr-line);
+}
+.t-noir__bandArt {
+  min-height: 34cqw;
+  background:
+    radial-gradient(50% 60% at 30% 40%, rgba(201,174,124,0.24), transparent 60%),
+    linear-gradient(120deg, #17161a, #0a0a0b);
+  border-right: 1px solid var(--nr-line);
+}
+.t-noir__bandText { padding: 6cqw 4cqw; display: flex; flex-direction: column; justify-content: center; gap: 1.6rem; }
+.t-noir__quote {
+  font-family: "Bodoni Moda", serif; font-style: italic;
+  font-size: clamp(1.3rem, 2.8cqw, 2.2rem); line-height: 1.32;
+}
+.t-noir__bandText p:last-of-type { color: var(--nr-mute); font-size: 0.92rem; max-width: 44ch; }
+
+/* ---------------- footer ---------------- */
+.t-noir__footer { padding: 5cqw 4cqw 4cqw; display: flex; justify-content: space-between; gap: 3rem; flex-wrap: wrap; }
+.t-noir__fLogo { font-family: "Bodoni Moda", serif; font-size: clamp(2rem, 7cqw, 5rem); letter-spacing: 0.16em; color: var(--nr-ink2); line-height: 1; }
+.t-noir__fCols { display: flex; gap: 4rem; flex-wrap: wrap; }
+.t-noir__fCol { display: flex; flex-direction: column; gap: 0.55rem; }
+.t-noir__fCol b { font-family: "Space Mono", monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--nr-gold); font-weight: 400; margin-bottom: 0.4rem; }
+.t-noir__fCol span { font-size: 0.82rem; color: var(--nr-mute); }
+
+@container (max-width: 860px) {
+  .t-noir__hero { grid-template-columns: 1fr; }
+  .t-noir__heroText { border-right: none; border-bottom: 1px solid var(--nr-line); }
+  .t-noir__heroArt { min-height: 70cqw; }
+  .t-noir__grid { grid-template-columns: 1fr 1fr; gap: 4cqw; }
+  .t-noir__item:nth-child(2) { transform: none; }
+  .t-noir__band { grid-template-columns: 1fr; }
+  .t-noir__bandArt { border-right: none; border-bottom: 1px solid var(--nr-line); min-height: 55cqw; }
+}
+@container (max-width: 560px) {
+  .t-noir__menu { display: none; }
+  .t-noir__grid { grid-template-columns: 1fr; }
+  .t-noir__heroFoot { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
+  .t-noir__season { text-align: left; }
+}

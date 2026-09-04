@@ -1,0 +1,163 @@
+/* NEON DISPATCH — 테크 뉴스레터. 터미널 창 크롬, 스캔라인,
+   민트 네온 + 마젠타. 프롬프트 문법을 UI로 쓴다.                  */
+
+.t-neon {
+  container-type: inline-size;
+  --nn-bg: #06080b;
+  --nn-panel: #0c1016;
+  --nn-panel2: #11171f;
+  --nn-text: #c6d3de;
+  --nn-mute: #5d6b78;
+  --nn-mint: #3df0c0;
+  --nn-magenta: #ff4ecd;
+  --nn-line: rgba(198, 211, 222, 0.12);
+
+  background: var(--nn-bg);
+  color: var(--nn-text);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow: hidden;
+  position: relative;
+}
+.t-neon *, .t-neon *::before, .t-neon *::after { box-sizing: border-box; }
+.t-neon h1, .t-neon h2, .t-neon h3, .t-neon p { margin: 0; }
+
+/* 스캔라인 + 글로우 */
+.t-neon__scan {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.028) 0 1px, transparent 1px 3px);
+}
+.t-neon__glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(50% 40% at 18% 0%, rgba(61,240,192,0.14), transparent 62%),
+    radial-gradient(40% 40% at 88% 22%, rgba(255,78,205,0.10), transparent 62%);
+}
+.t-neon__wrap { position: relative; z-index: 2; }
+
+/* ---------------- window chrome ---------------- */
+.t-neon__chrome {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.7rem 2.5cqw; border-bottom: 1px solid var(--nn-line);
+  background: var(--nn-panel);
+}
+.t-neon__dots { display: flex; gap: 0.4rem; }
+.t-neon__dots i { width: 9px; height: 9px; border-radius: 50%; display: block; }
+.t-neon__dots i:nth-child(1) { background: #ff5f57; }
+.t-neon__dots i:nth-child(2) { background: #febc2e; }
+.t-neon__dots i:nth-child(3) { background: #28c840; }
+.t-neon__chromeTitle { font-size: 0.7rem; color: var(--nn-mute); letter-spacing: 0.08em; }
+.t-neon__chromeRight { margin-left: auto; font-size: 0.66rem; color: var(--nn-mint); letter-spacing: 0.12em; }
+
+/* ---------------- masthead ---------------- */
+.t-neon__head { padding: 4cqw 2.5cqw 3cqw; border-bottom: 1px solid var(--nn-line); }
+.t-neon__prompt { color: var(--nn-mute); font-size: 0.78rem; margin-bottom: 1.6rem; }
+.t-neon__prompt b { color: var(--nn-mint); font-weight: 400; }
+.t-neon__prompt i { font-style: normal; color: var(--nn-text); }
+.t-neon__logo {
+  font-family: "Major Mono Display", monospace;
+  font-size: clamp(1.8rem, 7.5cqw, 6rem); line-height: 1;
+  color: var(--nn-mint);
+  text-shadow: 0 0 22px rgba(61,240,192,0.4);
+  letter-spacing: -0.01em;
+}
+.t-neon__logo span { color: var(--nn-magenta); text-shadow: 0 0 22px rgba(255,78,205,0.4); }
+.t-neon__tagline {
+  font-family: "IBM Plex Sans KR", sans-serif; font-weight: 300;
+  font-size: clamp(0.95rem, 1.8cqw, 1.3rem); color: var(--nn-text);
+  margin-top: 1.8rem; max-width: 52ch; line-height: 1.8;
+}
+.t-neon__cursor {
+  display: inline-block; width: 0.55em; height: 1.05em; background: var(--nn-mint);
+  vertical-align: -0.15em; margin-left: 0.25em; animation: nn-blink 1.05s steps(2) infinite;
+}
+@keyframes nn-blink { 50% { opacity: 0; } }
+
+.t-neon__stats { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 2.8rem; }
+.t-neon__stats div b { display: block; font-size: 1.6rem; color: var(--nn-mint); line-height: 1; }
+.t-neon__stats div span { font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--nn-mute); }
+
+/* ---------------- issue list ---------------- */
+.t-neon__section { padding: 3.5cqw 2.5cqw; }
+.t-neon__secHead {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+  font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--nn-mute);
+}
+.t-neon__secHead::after { content: ""; flex: 1; height: 1px; background: var(--nn-line); }
+.t-neon__secHead b { color: var(--nn-magenta); font-weight: 400; }
+
+.t-neon__issue {
+  display: grid; grid-template-columns: 5.5rem 1fr 9rem;
+  gap: 1.6rem; align-items: baseline;
+  padding: 1.5rem 1.2rem; border: 1px solid transparent; border-bottom-color: var(--nn-line);
+  text-decoration: none; color: inherit;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.t-neon__issue:hover {
+  background: var(--nn-panel2); border-color: var(--nn-mint);
+  transform: translateX(6px);
+}
+.t-neon__issueNo { color: var(--nn-mint); font-size: 0.76rem; letter-spacing: 0.08em; }
+.t-neon__issueTitle {
+  font-family: "IBM Plex Sans KR", sans-serif; font-weight: 600;
+  font-size: 1.05rem; letter-spacing: -0.02em; line-height: 1.45;
+}
+.t-neon__issueDesc { color: var(--nn-mute); font-size: 0.82rem; margin-top: 0.4rem; }
+.t-neon__issueTags { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+.t-neon__tag {
+  font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid var(--nn-line); padding: 0.15rem 0.45rem; color: var(--nn-mute);
+  white-space: nowrap;
+}
+.t-neon__issue:hover .t-neon__tag { border-color: rgba(61,240,192,0.4); color: var(--nn-mint); }
+
+/* ---------------- subscribe ---------------- */
+.t-neon__sub {
+  margin: 0 2.5cqw 4cqw; border: 1px solid var(--nn-mint);
+  background: linear-gradient(180deg, rgba(61,240,192,0.07), transparent 60%), var(--nn-panel);
+  padding: 3.5cqw 3cqw;
+  position: relative; overflow: hidden;
+}
+.t-neon__sub::before {
+  content: ""; position: absolute; top: -60%; left: -20%; width: 60%; height: 220%;
+  background: linear-gradient(90deg, transparent, rgba(61,240,192,0.09), transparent);
+  transform: rotate(18deg); animation: nn-sweep 6s ease-in-out infinite;
+}
+@keyframes nn-sweep { 0%,100% { left: -40%; } 50% { left: 90%; } }
+.t-neon__subTitle {
+  font-family: "IBM Plex Sans KR", sans-serif; font-weight: 700;
+  font-size: clamp(1.2rem, 3cqw, 2.1rem); letter-spacing: -0.03em; margin-bottom: 0.9rem;
+  position: relative;
+}
+.t-neon__subDesc { color: var(--nn-mute); max-width: 50ch; margin-bottom: 2rem; position: relative; }
+.t-neon__form { display: flex; gap: 0.6rem; max-width: 520px; position: relative; flex-wrap: wrap; }
+.t-neon__form input {
+  flex: 1; min-width: 200px; background: var(--nn-bg); border: 1px solid var(--nn-line);
+  color: var(--nn-text); font-family: inherit; font-size: 0.86rem;
+  padding: 0.9rem 1rem; outline: none; transition: border-color 0.25s;
+}
+.t-neon__form input:focus { border-color: var(--nn-mint); }
+.t-neon__form input::placeholder { color: var(--nn-mute); }
+.t-neon__form button {
+  background: var(--nn-mint); color: var(--nn-bg); border: none;
+  font-family: inherit; font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.9rem 1.6rem; cursor: pointer; transition: background 0.25s;
+}
+.t-neon__form button:hover { background: var(--nn-magenta); }
+.t-neon__subNote { font-size: 0.68rem; color: var(--nn-mute); margin-top: 1rem; position: relative; }
+
+/* ---------------- footer ---------------- */
+.t-neon__footer {
+  border-top: 1px solid var(--nn-line); padding: 2.4cqw 2.5cqw;
+  display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-size: 0.66rem; color: var(--nn-mute); letter-spacing: 0.1em;
+}
+.t-neon__footer a { color: var(--nn-mint); text-decoration: none; }
+
+@container (max-width: 760px) {
+  .t-neon__issue { grid-template-columns: 1fr; gap: 0.6rem; }
+  .t-neon__issueTags { justify-content: flex-start; }
+  .t-neon__stats { gap: 1.6rem; }
+}

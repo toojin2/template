@@ -1,0 +1,168 @@
+/* MERIDIAN PARTNERS — 컨설팅/금융. 딥 네이비 + 골드 헤어라인,
+   완전 대칭 조판, 얇은 세리프. 신뢰를 절제로 표현한다.            */
+
+.t-mrd {
+  container-type: inline-size;
+  --md-navy: #0d1a2b;
+  --md-navy2: #0a1421;
+  --md-cream: #f5f2ea;
+  --md-mute: #93a1b4;
+  --md-gold: #c9a55f;
+  --md-line: rgba(201, 165, 95, 0.28);
+
+  background: var(--md-navy);
+  color: var(--md-cream);
+  font-family: "Work Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow: hidden;
+}
+.t-mrd *, .t-mrd *::before, .t-mrd *::after { box-sizing: border-box; }
+.t-mrd h1, .t-mrd h2, .t-mrd h3, .t-mrd p { margin: 0; }
+
+.t-mrd__eyebrow {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.62rem;
+  letter-spacing: 0.36em; text-transform: uppercase; color: var(--md-gold);
+}
+
+/* ---------------- nav ---------------- */
+.t-mrd__nav {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 1.7rem 5cqw; border-bottom: 1px solid var(--md-line);
+}
+.t-mrd__navL, .t-mrd__navR { display: flex; gap: 2.1rem; }
+.t-mrd__navR { justify-content: flex-end; }
+.t-mrd__nav a {
+  font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--md-mute); text-decoration: none; transition: color 0.3s;
+}
+.t-mrd__nav a:hover { color: var(--md-gold); }
+.t-mrd__logo {
+  font-family: "Cormorant Garamond", serif; font-weight: 600;
+  font-size: 1.35rem; letter-spacing: 0.3em; text-indent: 0.3em; text-align: center;
+}
+
+/* ---------------- hero ---------------- */
+.t-mrd__hero {
+  text-align: center; padding: 8cqw 6cqw 6cqw;
+  position: relative; border-bottom: 1px solid var(--md-line);
+}
+.t-mrd__hero::before {
+  content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 5cqw;
+  background: linear-gradient(var(--md-gold), transparent);
+}
+.t-mrd__title {
+  font-family: "Cormorant Garamond", serif; font-weight: 300;
+  font-size: clamp(2.2rem, 6.6cqw, 5.4rem); line-height: 1.06;
+  letter-spacing: -0.01em; margin: 2.2rem 0 0;
+  animation: md-fade 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+.t-mrd__title em { font-style: italic; color: var(--md-gold); }
+.t-mrd__titleKr {
+  font-family: "Song Myung", serif;
+  font-size: clamp(1rem, 1.9cqw, 1.45rem); color: var(--md-mute);
+  margin-top: 2rem; line-height: 2; letter-spacing: -0.01em;
+  animation: md-fade 1.2s cubic-bezier(0.16,1,0.3,1) 0.15s both;
+}
+@keyframes md-fade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+.t-mrd__heroBtns { display: flex; gap: 1rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
+.t-mrd__btn {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.66rem;
+  letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+  padding: 1rem 2.1rem; border: 1px solid var(--md-line); color: var(--md-cream);
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.t-mrd__btn:hover { background: var(--md-gold); border-color: var(--md-gold); color: var(--md-navy); }
+.t-mrd__btn--solid { background: var(--md-gold); border-color: var(--md-gold); color: var(--md-navy); }
+.t-mrd__btn--solid:hover { background: transparent; color: var(--md-gold); }
+
+/* ---------------- stats band ---------------- */
+.t-mrd__stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--md-line);
+  background: var(--md-navy2);
+}
+.t-mrd__stat {
+  padding: 3.2cqw 2cqw; text-align: center;
+  border-right: 1px solid var(--md-line);
+}
+.t-mrd__stat:last-child { border-right: none; }
+.t-mrd__stat b {
+  display: block; font-family: "Cormorant Garamond", serif; font-weight: 300;
+  font-size: clamp(1.9rem, 4.2cqw, 3.4rem); line-height: 1; color: var(--md-gold);
+}
+.t-mrd__stat span {
+  display: block; margin-top: 0.9rem;
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--md-mute);
+}
+
+/* ---------------- services ---------------- */
+.t-mrd__section { padding: 7cqw 5cqw; }
+.t-mrd__secHead { text-align: center; margin-bottom: 5cqw; }
+.t-mrd__secTitle {
+  font-family: "Cormorant Garamond", serif; font-weight: 300;
+  font-size: clamp(1.6rem, 3.8cqw, 3rem); margin-top: 1.4rem;
+}
+.t-mrd__services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--md-line); }
+.t-mrd__service {
+  padding: 3.4cqw 2.6cqw; border-right: 1px solid var(--md-line); border-bottom: 1px solid var(--md-line);
+  transition: background 0.4s;
+}
+.t-mrd__service:last-child { border-right: none; }
+.t-mrd__service:hover { background: var(--md-navy2); }
+.t-mrd__serviceNo {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.66rem;
+  letter-spacing: 0.2em; color: var(--md-gold);
+}
+.t-mrd__serviceName {
+  font-family: "Song Myung", serif; font-size: 1.25rem;
+  margin: 1.4rem 0 1rem; letter-spacing: -0.01em;
+}
+.t-mrd__serviceDesc { color: var(--md-mute); font-size: 0.88rem; }
+.t-mrd__serviceList { margin-top: 1.6rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.t-mrd__serviceList span { font-size: 0.78rem; color: var(--md-mute); padding-left: 1rem; position: relative; }
+.t-mrd__serviceList span::before { content: "—"; position: absolute; left: 0; color: var(--md-gold); }
+
+/* ---------------- insight ---------------- */
+.t-mrd__insight { background: var(--md-cream); color: var(--md-navy); padding: 7cqw 5cqw; }
+.t-mrd__insightHead { display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; flex-wrap: wrap; border-bottom: 1px solid rgba(13,26,43,0.16); padding-bottom: 1.6rem; }
+.t-mrd__insightHead h2 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(1.5rem, 3.2cqw, 2.4rem); }
+.t-mrd__insightHead span { font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: #7c6a45; }
+.t-mrd__article {
+  display: grid; grid-template-columns: 7rem 1fr 9rem; gap: 2rem; align-items: baseline;
+  padding: 1.9rem 0; border-bottom: 1px solid rgba(13,26,43,0.12);
+  text-decoration: none; color: inherit; transition: padding 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.t-mrd__article:hover { padding-left: 1rem; }
+.t-mrd__article time { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: #7c6a45; }
+.t-mrd__article h3 { font-family: "Song Myung", serif; font-size: 1.1rem; font-weight: 400; letter-spacing: -0.01em; }
+.t-mrd__article em { font-style: normal; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: #7c6a45; text-align: right; }
+
+/* ---------------- contact ---------------- */
+.t-mrd__contact { text-align: center; padding: 8cqw 5cqw; border-top: 1px solid var(--md-line); }
+.t-mrd__contactTitle { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(1.8rem, 4.4cqw, 3.4rem); margin: 1.6rem 0 1.2rem; }
+.t-mrd__contactTitle em { font-style: italic; color: var(--md-gold); }
+.t-mrd__contactSub { color: var(--md-mute); max-width: 46ch; margin: 0 auto 2.6rem; }
+
+.t-mrd__footer {
+  display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;
+  padding: 2.4rem 5cqw; border-top: 1px solid var(--md-line);
+  font-size: 0.72rem; color: var(--md-mute); letter-spacing: 0.06em;
+}
+
+@container (max-width: 900px) {
+  .t-mrd__nav { grid-template-columns: 1fr; gap: 1.2rem; justify-items: center; }
+  .t-mrd__navL, .t-mrd__navR { justify-content: center; flex-wrap: wrap; }
+  .t-mrd__stats { grid-template-columns: 1fr 1fr; }
+  .t-mrd__stat:nth-child(2) { border-right: none; }
+  .t-mrd__stat:nth-child(1), .t-mrd__stat:nth-child(2) { border-bottom: 1px solid var(--md-line); }
+  .t-mrd__services { grid-template-columns: 1fr; }
+  .t-mrd__service { border-right: none; }
+  .t-mrd__article { grid-template-columns: 1fr; gap: 0.5rem; }
+  .t-mrd__article em { text-align: left; }
+}
+@container (max-width: 560px) {
+  .t-mrd__navL, .t-mrd__navR { display: none; }
+  .t-mrd__stats { grid-template-columns: 1fr; }
+  .t-mrd__stat { border-right: none; border-bottom: 1px solid var(--md-line); }
+}

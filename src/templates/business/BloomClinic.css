@@ -1,0 +1,196 @@
+/* BLOOM CLINIC — 의료/웰니스. 세이지·블러시 파스텔, 유기적 블롭,
+   아치 형태와 넉넉한 곡률. 부드러운 신뢰감.                       */
+
+.t-bloom {
+  container-type: inline-size;
+  --bl-bg: #f3f6ef;
+  --bl-forest: #2b3a30;
+  --bl-sage: #9cb79b;
+  --bl-sage-d: #6f8f73;
+  --bl-blush: #e9c6ba;
+  --bl-sand: #e7dfcd;
+  --bl-mute: #7c8a7e;
+
+  background: var(--bl-bg);
+  color: var(--bl-forest);
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  overflow: hidden;
+  position: relative;
+}
+.t-bloom *, .t-bloom *::before, .t-bloom *::after { box-sizing: border-box; }
+.t-bloom h1, .t-bloom h2, .t-bloom h3, .t-bloom p { margin: 0; }
+
+/* 배경 블롭 */
+.t-bloom__blobs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.t-bloom__blobs i { position: absolute; border-radius: 50%; filter: blur(50px); opacity: 0.55; }
+.t-bloom__blobs i:nth-child(1) { width: 44cqw; aspect-ratio: 1; background: var(--bl-sage); top: -12cqw; right: -10cqw; animation: bl-drift 18s ease-in-out infinite alternate; }
+.t-bloom__blobs i:nth-child(2) { width: 32cqw; aspect-ratio: 1; background: var(--bl-blush); top: 42cqw; left: -12cqw; animation: bl-drift 22s ease-in-out infinite alternate-reverse; }
+.t-bloom__blobs i:nth-child(3) { width: 26cqw; aspect-ratio: 1; background: var(--bl-sand); bottom: 4cqw; right: 12cqw; animation: bl-drift 26s ease-in-out infinite alternate; }
+@keyframes bl-drift { from { transform: translate(0,0) scale(1); } to { transform: translate(4cqw, -3cqw) scale(1.12); } }
+
+.t-bloom__wrap { position: relative; z-index: 1; }
+
+/* ---------------- nav ---------------- */
+.t-bloom__nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.8rem 5cqw;
+}
+.t-bloom__logo {
+  font-family: "Poiret One", sans-serif; font-size: 1.6rem;
+  letter-spacing: 0.18em; display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.t-bloom__logo i {
+  width: 16px; height: 16px; background: var(--bl-sage-d);
+  border-radius: 50% 0 50% 50%; display: inline-block;
+}
+.t-bloom__menu { display: flex; gap: 2rem; }
+.t-bloom__menu a { color: var(--bl-mute); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+.t-bloom__menu a:hover { color: var(--bl-forest); }
+.t-bloom__navBtn {
+  background: var(--bl-forest); color: var(--bl-bg);
+  padding: 0.7rem 1.5rem; border-radius: 999px; font-size: 0.85rem;
+  text-decoration: none; white-space: nowrap;
+  transition: background 0.3s;
+}
+.t-bloom__navBtn:hover { background: var(--bl-sage-d); }
+
+/* ---------------- hero ---------------- */
+.t-bloom__hero {
+  display: grid; grid-template-columns: 1.05fr 0.95fr;
+  gap: 4cqw; align-items: center;
+  padding: 4cqw 5cqw 6cqw;
+}
+.t-bloom__eyebrow {
+  display: inline-block; background: rgba(156,183,155,0.28);
+  color: var(--bl-sage-d); border-radius: 999px;
+  padding: 0.35rem 1rem; font-size: 0.74rem; letter-spacing: 0.1em; font-weight: 700;
+}
+.t-bloom__title {
+  font-family: "Gowun Batang", serif; font-weight: 700;
+  font-size: clamp(2rem, 5.4cqw, 4.2rem); line-height: 1.25;
+  letter-spacing: -0.035em; margin: 1.8rem 0 1.4rem;
+  animation: bl-in 1s cubic-bezier(0.16,1,0.3,1) both;
+}
+.t-bloom__title em {
+  font-style: normal; font-family: "Poiret One", sans-serif;
+  color: var(--bl-sage-d); letter-spacing: 0.02em;
+}
+@keyframes bl-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.t-bloom__lede { color: var(--bl-mute); max-width: 40ch; font-size: 1rem; }
+.t-bloom__heroBtns { display: flex; gap: 0.8rem; margin-top: 2.4rem; flex-wrap: wrap; }
+.t-bloom__btn {
+  border-radius: 999px; padding: 0.95rem 1.8rem; font-size: 0.9rem; font-weight: 700;
+  text-decoration: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.t-bloom__btn--fill { background: var(--bl-forest); color: var(--bl-bg); }
+.t-bloom__btn--fill:hover { background: var(--bl-sage-d); transform: translateY(-2px); }
+.t-bloom__btn--line { border: 1.5px solid rgba(43,58,48,0.25); color: var(--bl-forest); }
+.t-bloom__btn--line:hover { border-color: var(--bl-forest); transform: translateY(-2px); }
+
+/* 아치 이미지 */
+.t-bloom__arch {
+  position: relative; aspect-ratio: 4 / 5;
+  border-radius: 50% 50% 24px 24px / 34% 34% 4% 4%;
+  background:
+    radial-gradient(60% 50% at 50% 26%, rgba(255,255,255,0.55), transparent 60%),
+    linear-gradient(165deg, var(--bl-sand), var(--bl-sage) 62%, var(--bl-sage-d));
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgba(43,58,48,0.35);
+}
+.t-bloom__arch::after {
+  content: ""; position: absolute; left: 12%; right: 12%; bottom: 0; height: 44%;
+  background: radial-gradient(70% 90% at 50% 100%, rgba(233,198,186,0.75), transparent 68%);
+}
+.t-bloom__archCard {
+  position: absolute; left: -6%; bottom: 8%; z-index: 2;
+  background: #fff; border-radius: 20px; padding: 1.1rem 1.4rem;
+  box-shadow: 0 20px 40px -20px rgba(43,58,48,0.4);
+  display: flex; align-items: center; gap: 0.9rem;
+}
+.t-bloom__archCard b { font-family: "Poiret One", sans-serif; font-size: 1.7rem; color: var(--bl-sage-d); line-height: 1; }
+.t-bloom__archCard span { font-size: 0.76rem; color: var(--bl-mute); line-height: 1.4; }
+
+/* ---------------- services ---------------- */
+.t-bloom__section { padding: 5cqw 5cqw; }
+.t-bloom__secHead { text-align: center; margin-bottom: 3.5cqw; }
+.t-bloom__secTitle {
+  font-family: "Gowun Batang", serif; font-weight: 700;
+  font-size: clamp(1.5rem, 3.4cqw, 2.6rem); letter-spacing: -0.035em; margin-top: 1rem;
+}
+.t-bloom__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+.t-bloom__card {
+  background: #fff; border-radius: 26px; padding: 2.6cqw 2.2cqw;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+  box-shadow: 0 10px 30px -22px rgba(43,58,48,0.5);
+}
+.t-bloom__card:hover { transform: translateY(-8px); box-shadow: 0 26px 50px -26px rgba(43,58,48,0.5); }
+.t-bloom__cardIcon {
+  width: 46px; height: 46px; border-radius: 50% 50% 50% 6px;
+  display: grid; place-items: center; margin-bottom: 1.4rem;
+  font-family: "Poiret One", sans-serif; font-size: 1.2rem; color: #fff;
+}
+.t-bloom__card:nth-child(1) .t-bloom__cardIcon { background: var(--bl-sage-d); }
+.t-bloom__card:nth-child(2) .t-bloom__cardIcon { background: #c99384; }
+.t-bloom__card:nth-child(3) .t-bloom__cardIcon { background: #b3a680; }
+.t-bloom__cardTitle { font-family: "Gowun Batang", serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 0.7rem; letter-spacing: -0.03em; }
+.t-bloom__cardDesc { color: var(--bl-mute); font-size: 0.88rem; }
+.t-bloom__cardMeta { margin-top: 1.4rem; padding-top: 1.1rem; border-top: 1px solid rgba(43,58,48,0.1); font-size: 0.78rem; color: var(--bl-sage-d); font-weight: 700; }
+
+/* ---------------- hours strip ---------------- */
+.t-bloom__hours {
+  margin: 2cqw 5cqw; background: var(--bl-forest); color: var(--bl-bg);
+  border-radius: 30px; padding: 3cqw;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw;
+}
+.t-bloom__hoursTitle { font-family: "Poiret One", sans-serif; font-size: clamp(1.4rem, 3cqw, 2.2rem); letter-spacing: 0.06em; margin-bottom: 1.4rem; }
+.t-bloom__hoursRow {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: 0.75rem 0; border-bottom: 1px solid rgba(243,246,239,0.14);
+  font-size: 0.9rem;
+}
+.t-bloom__hoursRow b { font-weight: 700; }
+.t-bloom__hoursRow span { opacity: 0.7; }
+.t-bloom__hoursRow--off span { color: var(--bl-blush); opacity: 1; }
+.t-bloom__hoursNote { font-size: 0.84rem; opacity: 0.65; margin-top: 1.4rem; }
+
+/* ---------------- booking ---------------- */
+.t-bloom__book { text-align: center; padding: 6cqw 5cqw; }
+.t-bloom__bookTitle { font-family: "Gowun Batang", serif; font-weight: 700; font-size: clamp(1.6rem, 4cqw, 3rem); letter-spacing: -0.04em; margin: 1rem 0 1.2rem; }
+.t-bloom__bookSub { color: var(--bl-mute); max-width: 44ch; margin: 0 auto 2.4rem; }
+.t-bloom__form {
+  display: flex; gap: 0.6rem; max-width: 520px; margin: 0 auto;
+  background: #fff; border-radius: 999px; padding: 0.5rem 0.5rem 0.5rem 1.6rem;
+  align-items: center; box-shadow: 0 16px 40px -26px rgba(43,58,48,0.6);
+}
+.t-bloom__form input {
+  flex: 1; border: none; outline: none; background: none;
+  font-family: inherit; font-size: 0.92rem; color: var(--bl-forest); min-width: 0;
+}
+.t-bloom__form input::placeholder { color: #a9b5aa; }
+.t-bloom__form button {
+  border: none; border-radius: 999px; background: var(--bl-forest); color: var(--bl-bg);
+  font-family: inherit; font-weight: 700; font-size: 0.86rem;
+  padding: 0.8rem 1.5rem; cursor: pointer; white-space: nowrap;
+  transition: background 0.3s;
+}
+.t-bloom__form button:hover { background: var(--bl-sage-d); }
+
+.t-bloom__footer {
+  padding: 3cqw 5cqw; display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-size: 0.8rem; color: var(--bl-mute); border-top: 1px solid rgba(43,58,48,0.1);
+}
+
+@container (max-width: 900px) {
+  .t-bloom__hero { grid-template-columns: 1fr; }
+  .t-bloom__arch { max-width: 420px; margin: 0 auto; }
+  .t-bloom__cards { grid-template-columns: 1fr; }
+  .t-bloom__hours { grid-template-columns: 1fr; }
+  .t-bloom__menu { display: none; }
+}
+@container (max-width: 520px) {
+  .t-bloom__form { flex-direction: column; border-radius: 24px; padding: 1rem; align-items: stretch; }
+  .t-bloom__form input { padding: 0.5rem; text-align: center; }
+  .t-bloom__form button { width: 100%; }
+}

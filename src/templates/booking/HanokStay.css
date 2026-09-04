@@ -1,0 +1,168 @@
+/* HANOK STAY — 숙소 예약. 흙과 나무의 색, 세로 조판(writing-mode),
+   넉넉한 여백, 객실 스택과 달력 스트립.                            */
+
+.t-hanok {
+  container-type: inline-size;
+  --hk-paper: #f6f2e9;
+  --hk-paper2: #ece5d7;
+  --hk-ink: #2e2922;
+  --hk-mute: #857a68;
+  --hk-clay: #a56f49;
+  --hk-moss: #5c6a4d;
+  --hk-line: rgba(46, 41, 34, 0.16);
+
+  background: var(--hk-paper);
+  color: var(--hk-ink);
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.9;
+  overflow: hidden;
+}
+.t-hanok *, .t-hanok *::before, .t-hanok *::after { box-sizing: border-box; }
+.t-hanok h1, .t-hanok h2, .t-hanok h3, .t-hanok p { margin: 0; }
+
+.t-hanok__label {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.62rem;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--hk-clay);
+}
+
+/* ---------------- nav ---------------- */
+.t-hanok__nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.8rem 6cqw; border-bottom: 1px solid var(--hk-line);
+}
+.t-hanok__logo { font-family: "Hahmlet", serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.06em; }
+.t-hanok__menu { display: flex; gap: 2.2rem; }
+.t-hanok__menu a { font-size: 0.86rem; color: var(--hk-mute); text-decoration: none; transition: color 0.3s; }
+.t-hanok__menu a:hover { color: var(--hk-ink); }
+.t-hanok__navBtn {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.66rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  background: var(--hk-ink); color: var(--hk-paper);
+  padding: 0.65rem 1.3rem; text-decoration: none; white-space: nowrap;
+}
+
+/* ---------------- hero ---------------- */
+.t-hanok__hero { display: grid; grid-template-columns: auto 1fr 1fr; gap: 4cqw; padding: 6cqw 6cqw 5cqw; align-items: start; }
+
+/* 세로 조판 */
+.t-hanok__vertical {
+  writing-mode: vertical-rl; text-orientation: upright;
+  font-family: "Hahmlet", serif; font-weight: 700;
+  font-size: clamp(1.4rem, 3.4cqw, 2.6rem); letter-spacing: 0.28em; line-height: 1.5;
+  height: 100%; max-height: 30cqw;
+  animation: hk-in 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes hk-in { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: none; } }
+
+.t-hanok__heroText { padding-top: 1rem; }
+.t-hanok__title {
+  font-family: "Hahmlet", serif; font-weight: 700;
+  font-size: clamp(1.7rem, 4.2cqw, 3.2rem); line-height: 1.42; letter-spacing: -0.035em;
+  margin: 1.6rem 0 1.6rem;
+}
+.t-hanok__title em {
+  display: block; font-family: "Cormorant Garamond", serif; font-style: italic;
+  font-weight: 300; font-size: 0.62em; color: var(--hk-clay); letter-spacing: 0.02em; margin-top: 0.5rem;
+}
+.t-hanok__lede { color: var(--hk-mute); max-width: 40ch; }
+.t-hanok__facts { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 2.4rem; }
+.t-hanok__fact { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--hk-line); font-size: 0.86rem; max-width: 30rem; }
+.t-hanok__fact b { font-weight: 400; color: var(--hk-mute); font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+.t-hanok__heroArt {
+  aspect-ratio: 3/4; position: relative; overflow: hidden;
+  background:
+    linear-gradient(180deg, #cbbda3 0%, #a08d70 42%, #6c5f4a 100%);
+}
+.t-hanok__heroArt::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 26%; height: 8%;
+  background: linear-gradient(180deg, rgba(46,41,34,0.55), rgba(46,41,34,0.05));
+}
+.t-hanok__heroArt::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(46,41,34,0.14) 0 1px, transparent 1px 7%),
+    radial-gradient(60% 40% at 50% 84%, rgba(246,242,233,0.4), transparent 62%);
+}
+
+/* ---------------- rooms ---------------- */
+.t-hanok__section { padding: 5cqw 6cqw; }
+.t-hanok__secHead { display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3cqw; }
+.t-hanok__secTitle { font-family: "Hahmlet", serif; font-weight: 700; font-size: clamp(1.3rem, 3cqw, 2.2rem); letter-spacing: -0.035em; }
+
+.t-hanok__room {
+  display: grid; grid-template-columns: 5rem 1.1fr 1fr auto; gap: 3cqw;
+  padding: 3cqw 0; border-top: 1px solid var(--hk-line);
+  align-items: center; text-decoration: none; color: inherit;
+  transition: background 0.4s;
+}
+.t-hanok__room:last-of-type { border-bottom: 1px solid var(--hk-line); }
+.t-hanok__room:hover { background: var(--hk-paper2); }
+.t-hanok__roomNo { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 4cqw, 3rem); color: var(--hk-clay); line-height: 1; }
+.t-hanok__roomName { font-family: "Hahmlet", serif; font-weight: 700; font-size: 1.2rem; letter-spacing: -0.03em; }
+.t-hanok__roomEn { font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--hk-mute); margin-top: 0.3rem; }
+.t-hanok__roomDesc { color: var(--hk-mute); font-size: 0.88rem; }
+.t-hanok__roomMeta { text-align: right; }
+.t-hanok__roomPrice { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; white-space: nowrap; }
+.t-hanok__roomCap { font-size: 0.78rem; color: var(--hk-mute); }
+.t-hanok__soldout { font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--hk-clay); border: 1px solid var(--hk-clay); padding: 0.1rem 0.5rem; display: inline-block; margin-top: 0.4rem; }
+
+/* ---------------- calendar strip ---------------- */
+.t-hanok__cal { background: var(--hk-paper2); padding: 5cqw 6cqw; }
+.t-hanok__calGrid { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; margin-top: 2rem; }
+.t-hanok__day {
+  aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--hk-paper); border: 1px solid transparent;
+  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
+  transition: all 0.25s; cursor: pointer;
+}
+.t-hanok__day small { font-size: 0.5rem; letter-spacing: 0.08em; color: var(--hk-mute); margin-top: 0.15rem; }
+.t-hanok__day:hover { border-color: var(--hk-ink); }
+.t-hanok__day--on { background: var(--hk-moss); color: var(--hk-paper); }
+.t-hanok__day--on small { color: rgba(246,242,233,0.7); }
+.t-hanok__day--full { background: transparent; color: rgba(46,41,34,0.28); cursor: not-allowed; }
+.t-hanok__calFoot { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.6rem; font-size: 0.78rem; color: var(--hk-mute); }
+.t-hanok__legend { display: inline-flex; align-items: center; gap: 0.5rem; }
+.t-hanok__legend i { width: 12px; height: 12px; display: inline-block; }
+
+/* ---------------- house rules ---------------- */
+.t-hanok__rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; }
+.t-hanok__rule h3 { font-family: "Hahmlet", serif; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.03em; padding-bottom: 0.8rem; border-bottom: 1px solid var(--hk-line); margin-bottom: 1rem; }
+.t-hanok__rule p { font-size: 0.88rem; color: var(--hk-mute); }
+
+.t-hanok__cta { text-align: center; padding: 6cqw; border-top: 1px solid var(--hk-line); }
+.t-hanok__ctaTitle { font-family: "Hahmlet", serif; font-weight: 700; font-size: clamp(1.4rem, 3.4cqw, 2.4rem); letter-spacing: -0.04em; margin: 1.2rem 0 1rem; }
+.t-hanok__ctaSub { color: var(--hk-mute); max-width: 44ch; margin: 0 auto 2.4rem; }
+.t-hanok__ctaBtn {
+  display: inline-block; background: var(--hk-ink); color: var(--hk-paper);
+  font-family: "IBM Plex Mono", monospace; font-size: 0.7rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 1.1rem 2.4rem; text-decoration: none;
+  transition: background 0.35s, transform 0.35s;
+}
+.t-hanok__ctaBtn:hover { background: var(--hk-clay); transform: translateY(-2px); }
+
+.t-hanok__ft {
+  padding: 2.4rem 6cqw; border-top: 1px solid var(--hk-line);
+  display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-size: 0.78rem; color: var(--hk-mute);
+}
+
+@container (max-width: 1000px) {
+  .t-hanok__hero { grid-template-columns: auto 1fr; }
+  .t-hanok__heroArt { grid-column: span 2; aspect-ratio: 16/9; }
+  .t-hanok__room { grid-template-columns: 3.5rem 1fr auto; }
+  .t-hanok__roomDesc { display: none; }
+  .t-hanok__calGrid { grid-template-columns: repeat(7, 1fr); }
+  .t-hanok__rules { grid-template-columns: 1fr; }
+  .t-hanok__menu { display: none; }
+}
+@container (max-width: 560px) {
+  .t-hanok__vertical { display: none; }
+  .t-hanok__hero { grid-template-columns: 1fr; }
+  .t-hanok__heroArt { grid-column: span 1; }
+  .t-hanok__room { grid-template-columns: 1fr; gap: 0.8rem; }
+  .t-hanok__roomMeta { text-align: left; }
+}

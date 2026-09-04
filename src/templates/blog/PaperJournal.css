@@ -1,0 +1,174 @@
+/* PAPER JOURNAL — 개인 기록. 따뜻한 종이 질감, 손글씨 주석,
+   본문 옆 여백에 붙는 마지널리아. 읽기 위한 조판.                */
+
+.t-paper {
+  container-type: inline-size;
+  --pp-paper: #f7f2e6;
+  --pp-paper2: #efe8d8;
+  --pp-ink: #3b332a;
+  --pp-mute: #8b8171;
+  --pp-pencil: #b5563f;
+  --pp-line: rgba(59, 51, 42, 0.16);
+
+  background: var(--pp-paper);
+  color: var(--pp-ink);
+  font-family: "Lora", serif;
+  font-size: 16px;
+  line-height: 1.9;
+  overflow: hidden;
+  position: relative;
+}
+.t-paper *, .t-paper *::before, .t-paper *::after { box-sizing: border-box; }
+.t-paper h1, .t-paper h2, .t-paper h3, .t-paper p { margin: 0; }
+
+/* 종이 결 */
+.t-paper::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23p)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.13; mix-blend-mode: multiply;
+}
+.t-paper__wrap { position: relative; z-index: 2; }
+
+.t-paper__hand {
+  font-family: "Gaegu", cursive; color: var(--pp-pencil);
+  font-size: 1.05rem; line-height: 1.6;
+}
+
+/* ---------------- header ---------------- */
+.t-paper__top {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 2cqw 6cqw; border-bottom: 1px solid var(--pp-line);
+}
+.t-paper__logo {
+  font-family: "Instrument Serif", serif; font-size: 1.45rem;
+  letter-spacing: 0.02em;
+}
+.t-paper__logo em { font-style: italic; color: var(--pp-pencil); }
+.t-paper__menu { display: flex; gap: 1.8rem; }
+.t-paper__menu a {
+  font-family: "Gowun Batang", serif; font-size: 0.88rem;
+  color: var(--pp-mute); text-decoration: none;
+  padding-bottom: 2px; border-bottom: 1px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+.t-paper__menu a:hover { color: var(--pp-ink); border-color: var(--pp-pencil); }
+
+/* ---------------- title block ---------------- */
+.t-paper__head { padding: 6cqw 6cqw 3cqw; max-width: 1040px; margin: 0 auto; position: relative; }
+.t-paper__tape {
+  position: absolute; top: 3.2cqw; right: 6cqw;
+  background: rgba(181, 86, 63, 0.16);
+  border: 1px dashed rgba(181, 86, 63, 0.5);
+  padding: 0.5rem 1.1rem; transform: rotate(3deg);
+  font-family: "Gaegu", cursive; color: var(--pp-pencil); font-size: 1rem;
+}
+.t-paper__kicker {
+  font-family: "Gowun Batang", serif; font-size: 0.78rem;
+  letter-spacing: 0.24em; color: var(--pp-mute); text-transform: uppercase;
+}
+.t-paper__title {
+  font-family: "Gowun Batang", serif; font-weight: 700;
+  font-size: clamp(1.9rem, 5cqw, 4rem); line-height: 1.34;
+  letter-spacing: -0.045em; margin: 1.6rem 0 1.4rem; max-width: 20ch;
+  animation: pp-in 1s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes pp-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.t-paper__title u {
+  text-decoration: none; background-image: linear-gradient(transparent 62%, rgba(181,86,63,0.32) 62%);
+  padding: 0 0.06em;
+}
+.t-paper__byline {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  font-family: "Gowun Batang", serif; font-size: 0.86rem; color: var(--pp-mute);
+}
+.t-paper__avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(140deg, #cbb89a, #8d7f68);
+  border: 1px solid var(--pp-line);
+}
+
+/* ---------------- article + marginalia ---------------- */
+.t-paper__article {
+  display: grid; grid-template-columns: 1fr minmax(0, 30rem) 15rem 1fr;
+  padding: 0 6cqw 5cqw; gap: 0 3cqw;
+  max-width: 1240px; margin: 0 auto;
+}
+.t-paper__body { grid-column: 2; }
+.t-paper__margin { grid-column: 3; }
+
+.t-paper__body p { margin-bottom: 1.5rem; }
+.t-paper__body p:first-of-type::first-letter {
+  float: left; font-family: "Instrument Serif", serif;
+  font-size: 3.6em; line-height: 0.82; padding: 0.06em 0.14em 0 0; color: var(--pp-pencil);
+}
+.t-paper__body h2 {
+  font-family: "Gowun Batang", serif; font-weight: 700;
+  font-size: 1.3rem; letter-spacing: -0.035em; margin: 2.6rem 0 1.1rem;
+}
+.t-paper__quote {
+  margin: 2.4rem 0; padding: 0.4rem 0 0.4rem 1.6rem;
+  border-left: 3px solid var(--pp-pencil);
+  font-family: "Instrument Serif", serif; font-style: italic;
+  font-size: 1.32rem; line-height: 1.6; color: #5a4f42;
+}
+.t-paper__divider { display: block; text-align: center; margin: 3rem 0; color: var(--pp-mute); letter-spacing: 1rem; }
+
+.t-paper__note {
+  border-top: 1px solid var(--pp-line); padding-top: 0.9rem; margin-bottom: 2.6rem;
+}
+.t-paper__note b {
+  display: block; font-family: "Gowun Batang", serif; font-size: 0.72rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--pp-mute); margin-bottom: 0.5rem;
+}
+.t-paper__noteSketch {
+  height: 90px; margin-bottom: 0.8rem;
+  border: 1px solid var(--pp-line);
+  background:
+    radial-gradient(40% 60% at 30% 60%, rgba(181,86,63,0.2), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 13px, var(--pp-line) 13px 14px),
+    var(--pp-paper2);
+}
+
+/* ---------------- more entries ---------------- */
+.t-paper__more {
+  border-top: 1px solid var(--pp-line);
+  padding: 4cqw 6cqw 6cqw; max-width: 1240px; margin: 0 auto;
+}
+.t-paper__moreHead {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  margin-bottom: 2.4rem; flex-wrap: wrap;
+}
+.t-paper__moreTitle { font-family: "Instrument Serif", serif; font-size: clamp(1.4rem, 3cqw, 2.2rem); }
+.t-paper__entries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; }
+.t-paper__entry { text-decoration: none; color: inherit; display: block; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+.t-paper__entry:hover { transform: translateY(-5px); }
+.t-paper__entryArt {
+  aspect-ratio: 3/2; margin-bottom: 1.1rem; border: 1px solid var(--pp-line);
+}
+.t-paper__entryArt--1 { background: linear-gradient(150deg, #d9c7a8, #a8917a); }
+.t-paper__entryArt--2 { background: linear-gradient(170deg, #c3cbb7, #7f8a76); }
+.t-paper__entryArt--3 { background: linear-gradient(130deg, #dcc0b6, #a3796c); }
+.t-paper__entryDate { font-family: "Gaegu", cursive; color: var(--pp-pencil); font-size: 0.95rem; }
+.t-paper__entryTitle {
+  font-family: "Gowun Batang", serif; font-weight: 700; font-size: 1.05rem;
+  letter-spacing: -0.035em; line-height: 1.5; margin-top: 0.3rem;
+}
+
+.t-paper__footer {
+  border-top: 1px solid var(--pp-line); padding: 3cqw 6cqw;
+  display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-family: "Gowun Batang", serif; font-size: 0.82rem; color: var(--pp-mute);
+}
+
+@container (max-width: 1000px) {
+  .t-paper__article { grid-template-columns: 1fr; }
+  .t-paper__body, .t-paper__margin { grid-column: 1; }
+  .t-paper__margin { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+  .t-paper__entries { grid-template-columns: 1fr 1fr; }
+}
+@container (max-width: 600px) {
+  .t-paper__menu { display: none; }
+  .t-paper__margin { grid-template-columns: 1fr; }
+  .t-paper__entries { grid-template-columns: 1fr; }
+  .t-paper__tape { display: none; }
+}

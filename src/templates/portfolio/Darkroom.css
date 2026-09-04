@@ -1,0 +1,173 @@
+/* DARKROOM — 사진가 포트폴리오. 암실의 어둠과 세이프라이트 앰버,
+   좌측 필름 스트립(스프로킷 홀) 내비게이션, 풀블리드 시퀀스.      */
+
+.t-dark {
+  container-type: inline-size;
+  --dk-bg: #0a0a09;
+  --dk-bg2: #121110;
+  --dk-text: #d9d4ca;
+  --dk-mute: #6c6760;
+  --dk-amber: #d9622f;
+  --dk-line: rgba(217, 212, 202, 0.13);
+
+  background: var(--dk-bg);
+  color: var(--dk-text);
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 92px 1fr;
+}
+.t-dark *, .t-dark *::before, .t-dark *::after { box-sizing: border-box; }
+.t-dark h1, .t-dark h2, .t-dark h3, .t-dark p { margin: 0; }
+
+.t-dark__meta {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.6rem;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--dk-mute);
+}
+
+/* ---------------- film strip ---------------- */
+.t-dark__strip {
+  background: var(--dk-bg2); border-right: 1px solid var(--dk-line);
+  padding: 1.4rem 0; position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 1.4rem;
+}
+.t-dark__strip::before, .t-dark__strip::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 10px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 10px, rgba(217,212,202,0.16) 10px 18px);
+}
+.t-dark__strip::before { left: 6px; }
+.t-dark__strip::after { right: 6px; }
+.t-dark__frame {
+  width: 46px; aspect-ratio: 3/2; border: 1px solid var(--dk-line);
+  cursor: pointer; transition: border-color 0.3s, transform 0.3s, filter 0.4s;
+  filter: grayscale(1) brightness(0.7);
+}
+.t-dark__frame:hover, .t-dark__frame--on { border-color: var(--dk-amber); filter: none; transform: scale(1.06); }
+.t-dark__frame--1 { background: linear-gradient(150deg, #4a3f36, #a89076); }
+.t-dark__frame--2 { background: linear-gradient(190deg, #2b3a40, #7f9299); }
+.t-dark__frame--3 { background: linear-gradient(120deg, #52362f, #b07a5c); }
+.t-dark__frame--4 { background: linear-gradient(160deg, #33322c, #8d8b7c); }
+.t-dark__frame--5 { background: linear-gradient(200deg, #3d2f3f, #9a7f96); }
+.t-dark__stripLabel {
+  margin-top: auto; writing-mode: vertical-rl;
+  font-family: "IBM Plex Mono", monospace; font-size: 0.56rem;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--dk-mute);
+}
+
+.t-dark__main { min-width: 0; }
+
+/* ---------------- top ---------------- */
+.t-dark__top {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.5rem 3.5cqw; border-bottom: 1px solid var(--dk-line);
+}
+.t-dark__logo {
+  font-family: "Instrument Serif", serif; font-size: 1.5rem; letter-spacing: 0.01em;
+}
+.t-dark__logo em { font-style: italic; color: var(--dk-amber); }
+.t-dark__nav { display: flex; gap: 2rem; }
+.t-dark__nav a {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.66rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--dk-mute); text-decoration: none; transition: color 0.3s;
+}
+.t-dark__nav a:hover { color: var(--dk-amber); }
+
+/* ---------------- hero plate ---------------- */
+.t-dark__plate { position: relative; aspect-ratio: 21/9; overflow: hidden; border-bottom: 1px solid var(--dk-line); }
+.t-dark__plateImg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(58% 62% at 38% 34%, rgba(217,98,47,0.30), transparent 62%),
+    linear-gradient(160deg, #14120f 0%, #443a30 44%, #0d0c0a 100%);
+  animation: dk-breathe 14s ease-in-out infinite alternate;
+}
+@keyframes dk-breathe { from { transform: scale(1); } to { transform: scale(1.06); } }
+.t-dark__plateImg::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.28; mix-blend-mode: overlay;
+}
+.t-dark__plateText {
+  position: absolute; left: 3.5cqw; bottom: 3cqw; right: 3.5cqw; z-index: 2;
+}
+.t-dark__title {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(1.8rem, 7cqw, 6rem); line-height: 0.98; letter-spacing: -0.015em;
+  animation: dk-in 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+.t-dark__title em { font-style: italic; color: var(--dk-amber); }
+@keyframes dk-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.t-dark__plateMeta { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.4rem; }
+
+/* ---------------- sequence ---------------- */
+.t-dark__seq { padding: 4cqw 3.5cqw; }
+.t-dark__seqHead { display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3cqw; }
+.t-dark__seqTitle { font-family: "Song Myung", serif; font-size: clamp(1.2rem, 2.6cqw, 1.9rem); letter-spacing: -0.02em; }
+.t-dark__grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.4cqw; }
+.t-dark__shot {
+  position: relative; overflow: hidden; text-decoration: none; color: inherit;
+  border: 1px solid var(--dk-line);
+}
+.t-dark__shot i {
+  display: block; position: absolute; inset: 0;
+  filter: grayscale(0.7) brightness(0.85);
+  transition: transform 1s cubic-bezier(0.16,1,0.3,1), filter 0.7s;
+}
+.t-dark__shot:hover i { transform: scale(1.07); filter: none; }
+.t-dark__shot--a { grid-column: span 4; aspect-ratio: 16/10; }
+.t-dark__shot--b { grid-column: span 2; aspect-ratio: 4/5; }
+.t-dark__shot--c { grid-column: span 2; aspect-ratio: 1; }
+.t-dark__shot--d { grid-column: span 4; aspect-ratio: 16/7; }
+.t-dark__i1 i { background: linear-gradient(150deg, #2a2622, #6f6255 55%, #b39d84); }
+.t-dark__i2 i { background: linear-gradient(200deg, #1b2428, #5c6f77 60%, #9fb2b8); }
+.t-dark__i3 i { background: linear-gradient(120deg, #33221e, #7c4f3c 58%, #c08a63); }
+.t-dark__i4 i { background: linear-gradient(170deg, #1e1e1c, #4b4a42 52%, #8f8d7e); }
+.t-dark__cap {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(transparent, rgba(10,10,9,0.9));
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.t-dark__shot:hover .t-dark__cap { opacity: 1; transform: none; }
+.t-dark__cap b { display: block; font-family: "Song Myung", serif; font-weight: 400; font-size: 1rem; letter-spacing: -0.01em; }
+
+/* ---------------- exhibitions ---------------- */
+.t-dark__ex { padding: 4cqw 3.5cqw; border-top: 1px solid var(--dk-line); }
+.t-dark__exRow {
+  display: grid; grid-template-columns: 5rem 1fr 12rem; gap: 1.5rem;
+  padding: 1.3rem 0; border-bottom: 1px solid var(--dk-line); align-items: baseline;
+}
+.t-dark__exRow b { font-family: "Song Myung", serif; font-weight: 400; font-size: 1.02rem; }
+.t-dark__exRow span:last-child { text-align: right; }
+
+/* ---------------- footer ---------------- */
+.t-dark__footer {
+  padding: 4cqw 3.5cqw; border-top: 1px solid var(--dk-line);
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap;
+}
+.t-dark__mail {
+  font-family: "Instrument Serif", serif; font-style: italic;
+  font-size: clamp(1.3rem, 4cqw, 3rem); color: var(--dk-amber);
+  text-decoration: none; line-height: 1;
+}
+.t-dark__mail:hover { color: var(--dk-text); }
+
+@container (max-width: 900px) {
+  .t-dark__grid { grid-template-columns: repeat(2, 1fr); }
+  .t-dark__shot--a, .t-dark__shot--d { grid-column: span 2; }
+  .t-dark__shot--b, .t-dark__shot--c { grid-column: span 1; }
+  .t-dark__nav { display: none; }
+  .t-dark__exRow { grid-template-columns: 4rem 1fr; }
+  .t-dark__exRow span:last-child { display: none; }
+}
+@container (max-width: 560px) {
+  .t-dark { grid-template-columns: 54px 1fr; }
+  .t-dark__frame { width: 30px; }
+  .t-dark__grid { grid-template-columns: 1fr; }
+  .t-dark__shot--a, .t-dark__shot--b, .t-dark__shot--c, .t-dark__shot--d { grid-column: span 1; aspect-ratio: 4/3; }
+}

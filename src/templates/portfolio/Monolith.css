@@ -1,0 +1,137 @@
+/* MONOLITH — 브루탈 미니멀 포트폴리오. 색을 쓰지 않는다.
+   거대한 타입 한 덩어리와, 호버로만 반응하는 인덱스 리스트.       */
+
+.t-mono {
+  container-type: inline-size;
+  --mo-paper: #e8e8e4;
+  --mo-ink: #0b0b0b;
+  --mo-mute: #6a6a66;
+  --mo-line: rgba(11, 11, 11, 0.2);
+
+  background: var(--mo-paper);
+  color: var(--mo-ink);
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+.t-mono *, .t-mono *::before, .t-mono *::after { box-sizing: border-box; }
+.t-mono h1, .t-mono h2, .t-mono h3, .t-mono p { margin: 0; }
+
+/* ---------------- nav ---------------- */
+.t-mono__nav {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  padding: 1.6rem 3cqw; border-bottom: 1px solid var(--mo-ink);
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.t-mono__nav a { color: inherit; text-decoration: none; }
+.t-mono__navLinks { display: flex; gap: 2rem; }
+.t-mono__navLinks a { position: relative; }
+.t-mono__navLinks a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px;
+  background: var(--mo-ink); transform: scaleX(0); transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.t-mono__navLinks a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* ---------------- monolith type ---------------- */
+.t-mono__hero { padding: 5cqw 3cqw 3cqw; border-bottom: 1px solid var(--mo-ink); }
+.t-mono__mega {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(3rem, 19.5cqw, 17rem);
+  line-height: 0.78; letter-spacing: -0.06em; text-transform: uppercase;
+}
+.t-mono__mega span { display: block; }
+.t-mono__mega span:nth-child(1) { animation: mo-in 1s cubic-bezier(0.16,1,0.3,1) both; }
+.t-mono__mega span:nth-child(2) { animation: mo-in 1s cubic-bezier(0.16,1,0.3,1) 0.1s both; text-align: right; }
+@keyframes mo-in { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+
+.t-mono__heroFoot {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  margin-top: 4cqw; padding-top: 1.4rem; border-top: 1px solid var(--mo-line);
+  font-size: 0.72rem; letter-spacing: 0.06em;
+}
+.t-mono__heroFoot b { display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mo-mute); margin-bottom: 0.5rem; }
+.t-mono__heroFoot p { font-family: "IBM Plex Sans KR", sans-serif; font-size: 0.86rem; line-height: 1.7; }
+
+/* ---------------- index list ---------------- */
+.t-mono__index { border-bottom: 1px solid var(--mo-ink); }
+.t-mono__row {
+  display: grid; grid-template-columns: 4rem 1fr 12rem 6rem;
+  align-items: center; gap: 1.5rem;
+  padding: 2.2cqw 3cqw; border-bottom: 1px solid var(--mo-line);
+  text-decoration: none; color: inherit;
+  position: relative; overflow: hidden;
+  transition: color 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+.t-mono__row::before {
+  content: ""; position: absolute; inset: 0; background: var(--mo-ink);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+.t-mono__row:hover { color: var(--mo-paper); }
+.t-mono__row:hover::before { transform: scaleY(1); transform-origin: top; }
+.t-mono__row > * { position: relative; z-index: 1; }
+.t-mono__rowNo { font-size: 0.72rem; letter-spacing: 0.14em; }
+.t-mono__rowName {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.1rem, 3.2cqw, 2.4rem); letter-spacing: -0.04em; text-transform: uppercase;
+  line-height: 1.05;
+}
+.t-mono__rowKr { font-family: "IBM Plex Sans KR", sans-serif; font-weight: 400; font-size: 0.86rem; letter-spacing: -0.01em; opacity: 0.72; }
+.t-mono__rowYear { font-size: 0.74rem; letter-spacing: 0.14em; text-align: right; }
+.t-mono__rowArrow { text-align: right; font-size: 1.1rem; transform: translateX(-6px); opacity: 0; transition: all 0.45s cubic-bezier(0.16,1,0.3,1); }
+.t-mono__row:hover .t-mono__rowArrow { transform: none; opacity: 1; }
+
+/* ---------------- statement ---------------- */
+.t-mono__statement {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 3cqw;
+  padding: 5cqw 3cqw; border-bottom: 1px solid var(--mo-ink);
+}
+.t-mono__stLabel { font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--mo-mute); }
+.t-mono__stText {
+  font-family: "IBM Plex Sans KR", sans-serif; font-weight: 700;
+  font-size: clamp(1.05rem, 2.4cqw, 1.9rem); letter-spacing: -0.035em; line-height: 1.65;
+}
+.t-mono__stSmall { font-family: "IBM Plex Sans KR", sans-serif; font-weight: 400; font-size: 0.92rem; color: var(--mo-mute); margin-top: 1.8rem; max-width: 54ch; line-height: 1.9; }
+
+/* ---------------- clients grid ---------------- */
+.t-mono__clients { display: grid; grid-template-columns: repeat(6, 1fr); border-bottom: 1px solid var(--mo-ink); }
+.t-mono__client {
+  padding: 2.2cqw 1rem; text-align: center;
+  border-right: 1px solid var(--mo-line);
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: background 0.3s, color 0.3s;
+}
+.t-mono__client:last-child { border-right: none; }
+.t-mono__client:hover { background: var(--mo-ink); color: var(--mo-paper); }
+
+/* ---------------- contact ---------------- */
+.t-mono__contact { padding: 5cqw 3cqw; display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
+.t-mono__mail {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.2rem, 5.4cqw, 4.4rem); letter-spacing: -0.05em;
+  text-decoration: none; color: inherit; line-height: 1;
+  border-bottom: 3px solid var(--mo-ink); padding-bottom: 0.1em;
+  transition: opacity 0.3s;
+}
+.t-mono__mail:hover { opacity: 0.5; }
+.t-mono__social { display: flex; flex-direction: column; gap: 0.4rem; text-align: right; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.t-mono__social a { color: inherit; text-decoration: none; }
+.t-mono__social a:hover { text-decoration: line-through; }
+
+@container (max-width: 900px) {
+  .t-mono__row { grid-template-columns: 3rem 1fr 4rem; }
+  .t-mono__rowYear { display: none; }
+  .t-mono__heroFoot { grid-template-columns: 1fr 1fr; }
+  .t-mono__statement { grid-template-columns: 1fr; }
+  .t-mono__clients { grid-template-columns: repeat(3, 1fr); }
+  .t-mono__client:nth-child(3n) { border-right: none; }
+  .t-mono__client { border-bottom: 1px solid var(--mo-line); }
+}
+@container (max-width: 560px) {
+  .t-mono__navLinks { display: none; }
+  .t-mono__row { grid-template-columns: 1fr 3rem; }
+  .t-mono__rowNo { display: none; }
+  .t-mono__heroFoot { grid-template-columns: 1fr; }
+}

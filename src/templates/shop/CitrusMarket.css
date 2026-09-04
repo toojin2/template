@@ -1,0 +1,180 @@
+/* CITRUS MARKET — 신선식품/리빙. 크림 배경 위 과일빛 색면,
+   벤토 그리드, 두꺼운 라운드, 스티커 뱃지.                        */
+
+.t-citrus {
+  container-type: inline-size;
+  --ct-cream: #fff8ec;
+  --ct-ink: #241f19;
+  --ct-orange: #ff7a29;
+  --ct-lemon: #ffd23f;
+  --ct-leaf: #1f7a4d;
+  --ct-berry: #e0446b;
+  --ct-line: #241f19;
+
+  background: var(--ct-cream);
+  color: var(--ct-ink);
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  overflow: hidden;
+}
+.t-citrus *, .t-citrus *::before, .t-citrus *::after { box-sizing: border-box; }
+.t-citrus h1, .t-citrus h2, .t-citrus h3, .t-citrus p { margin: 0; }
+
+/* ---------------- nav ---------------- */
+.t-citrus__nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.4rem 3.5cqw;
+}
+.t-citrus__logo {
+  font-family: "Unbounded", sans-serif; font-weight: 700;
+  font-size: 1.25rem; letter-spacing: -0.04em;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.t-citrus__logo em {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--ct-orange); border: 2px solid var(--ct-ink);
+  display: inline-block; position: relative;
+}
+.t-citrus__logo em::after {
+  content: ""; position: absolute; left: 50%; top: -6px; width: 2px; height: 8px;
+  background: var(--ct-leaf); transform: rotate(20deg);
+}
+.t-citrus__menu { display: flex; gap: 1.9rem; font-weight: 500; font-size: 0.92rem; }
+.t-citrus__menu a { color: inherit; text-decoration: none; }
+.t-citrus__menu a:hover { color: var(--ct-orange); }
+.t-citrus__navBtn {
+  font-family: "Jua", sans-serif; font-size: 0.9rem;
+  background: var(--ct-ink); color: var(--ct-cream);
+  padding: 0.6rem 1.2rem; border-radius: 999px; white-space: nowrap;
+}
+
+/* ---------------- bento ---------------- */
+.t-citrus__bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(9.5cqw, auto);
+  gap: 1.4cqw;
+  padding: 0 3.5cqw 3.5cqw;
+}
+.t-citrus__tile {
+  border: 2.5px solid var(--ct-line);
+  border-radius: 26px;
+  padding: 2.2cqw;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 5px 6px 0 var(--ct-ink);
+  animation: ct-pop 0.7s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+}
+.t-citrus__tile:nth-child(1) { animation-delay: 0.02s; }
+.t-citrus__tile:nth-child(2) { animation-delay: 0.09s; }
+.t-citrus__tile:nth-child(3) { animation-delay: 0.16s; }
+.t-citrus__tile:nth-child(4) { animation-delay: 0.23s; }
+.t-citrus__tile:nth-child(5) { animation-delay: 0.30s; }
+.t-citrus__tile:nth-child(6) { animation-delay: 0.37s; }
+.t-citrus__tile:nth-child(7) { animation-delay: 0.44s; }
+@keyframes ct-pop { from { opacity: 0; transform: translateY(24px) scale(0.97); } to { opacity: 1; transform: none; } }
+
+.t-citrus__tile--hero { grid-column: span 2; grid-row: span 3; background: var(--ct-orange); color: var(--ct-cream); }
+.t-citrus__tile--wide { grid-column: span 2; grid-row: span 2; background: var(--ct-lemon); }
+.t-citrus__tile--leaf { grid-column: span 1; grid-row: span 2; background: var(--ct-leaf); color: var(--ct-cream); }
+.t-citrus__tile--plain { grid-column: span 1; grid-row: span 2; background: #fff; }
+.t-citrus__tile--berry { grid-column: span 2; grid-row: span 2; background: var(--ct-berry); color: var(--ct-cream); }
+.t-citrus__tile--note { grid-column: span 2; grid-row: span 1; background: #fff; }
+
+.t-citrus__heroTitle {
+  font-family: "Jua", sans-serif;
+  font-size: clamp(1.8rem, 4.6cqw, 3.5rem);
+  line-height: 1.14; letter-spacing: -0.02em;
+}
+.t-citrus__heroTitle small {
+  display: block; font-family: "Unbounded", sans-serif; font-weight: 400;
+  font-size: 0.26em; letter-spacing: 0.24em; text-transform: uppercase;
+  margin-bottom: 1.2rem; opacity: 0.85;
+}
+.t-citrus__heroCopy { font-size: 0.95rem; opacity: 0.92; max-width: 32ch; margin-top: 1rem; }
+.t-citrus__heroBtn {
+  align-self: flex-start; margin-top: 1.6rem;
+  background: var(--ct-cream); color: var(--ct-ink);
+  border: 2.5px solid var(--ct-ink); border-radius: 999px;
+  padding: 0.85rem 1.6rem; font-family: "Jua", sans-serif; font-size: 1rem;
+  text-decoration: none; box-shadow: 3px 4px 0 var(--ct-ink);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.t-citrus__heroBtn:hover { transform: translate(2px, 3px); box-shadow: 0 0 0 var(--ct-ink); }
+.t-citrus__blob {
+  position: absolute; right: -14%; bottom: -22%;
+  width: 62%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, rgba(255,255,255,0.5), rgba(255,255,255,0) 62%), var(--ct-lemon);
+  border: 2.5px solid var(--ct-ink);
+  animation: ct-bob 7s ease-in-out infinite alternate;
+}
+@keyframes ct-bob { from { transform: translateY(0) rotate(-4deg); } to { transform: translateY(-16px) rotate(6deg); } }
+
+.t-citrus__tileLabel {
+  font-family: "Unbounded", sans-serif; font-size: 0.6rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.75;
+}
+.t-citrus__tileBig { font-family: "Jua", sans-serif; font-size: clamp(1.2rem, 2.5cqw, 2rem); line-height: 1.22; margin-top: 0.7rem; }
+.t-citrus__tileNum { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: clamp(1.6rem, 3.6cqw, 3rem); line-height: 1; letter-spacing: -0.05em; }
+
+.t-citrus__prod { display: flex; align-items: flex-end; gap: 1.2rem; margin-top: 1rem; }
+.t-citrus__swatch {
+  width: 4.6cqw; min-width: 46px; aspect-ratio: 1; border-radius: 18px;
+  border: 2.5px solid var(--ct-ink); flex-shrink: 0;
+}
+.t-citrus__swatch--a { background: linear-gradient(145deg, #ffb03a, #ff6b2c); }
+.t-citrus__swatch--b { background: linear-gradient(145deg, #9be15d, #2c8f4f); }
+.t-citrus__swatch--c { background: linear-gradient(145deg, #ff9ab5, #e0446b); }
+.t-citrus__price { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.03em; }
+.t-citrus__price small { display: block; font-weight: 400; font-size: 0.6rem; letter-spacing: 0.14em; opacity: 0.7; text-transform: uppercase; }
+
+.t-citrus__sticker {
+  position: absolute; top: 1.4cqw; right: 1.4cqw;
+  background: var(--ct-cream); color: var(--ct-ink);
+  border: 2.5px solid var(--ct-ink); border-radius: 999px;
+  font-family: "Jua", sans-serif; font-size: 0.75rem;
+  padding: 0.35rem 0.8rem; transform: rotate(7deg);
+}
+
+/* ---------------- rail ---------------- */
+.t-citrus__railWrap { padding: 0 3.5cqw 3.5cqw; }
+.t-citrus__railHead { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.6rem; gap: 1rem; }
+.t-citrus__railTitle { font-family: "Jua", sans-serif; font-size: clamp(1.3rem, 2.8cqw, 2.1rem); }
+.t-citrus__railMore { font-size: 0.85rem; font-weight: 600; color: var(--ct-leaf); text-decoration: none; white-space: nowrap; }
+.t-citrus__rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(190px, 1fr); gap: 1.2cqw; overflow-x: auto; padding-bottom: 0.6rem; scrollbar-width: thin; }
+.t-citrus__card {
+  border: 2.5px solid var(--ct-ink); border-radius: 22px; background: #fff;
+  padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem;
+  transition: transform 0.3s cubic-bezier(0.2,1.3,0.4,1);
+}
+.t-citrus__card:hover { transform: translateY(-6px) rotate(-1deg); }
+.t-citrus__cardArt { aspect-ratio: 4/3; border-radius: 14px; border: 2px solid var(--ct-ink); }
+.t-citrus__cardArt--1 { background: repeating-linear-gradient(45deg, #ffd23f 0 12px, #ffdf72 12px 24px); }
+.t-citrus__cardArt--2 { background: radial-gradient(circle at 40% 35%, #b6e88a, #2c8f4f); }
+.t-citrus__cardArt--3 { background: repeating-radial-gradient(circle at 60% 40%, #ffb8cb 0 10px, #ff8fae 10px 20px); }
+.t-citrus__cardArt--4 { background: linear-gradient(135deg, #ffb03a, #ff6b2c 60%, #e0446b); }
+.t-citrus__cardName { font-family: "Jua", sans-serif; font-size: 1rem; line-height: 1.3; }
+.t-citrus__cardFoot { display: flex; align-items: center; justify-content: space-between; }
+.t-citrus__tag { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.06em; background: var(--ct-lemon); border: 1.5px solid var(--ct-ink); border-radius: 999px; padding: 0.15rem 0.55rem; }
+
+/* ---------------- footer ---------------- */
+.t-citrus__footer {
+  margin: 0 3.5cqw 3.5cqw; padding: 3cqw;
+  background: var(--ct-ink); color: var(--ct-cream);
+  border-radius: 26px;
+  display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: flex-end;
+}
+.t-citrus__fBig { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: clamp(1.6rem, 5cqw, 3.4rem); letter-spacing: -0.05em; line-height: 1; }
+.t-citrus__fNote { font-size: 0.82rem; opacity: 0.72; line-height: 1.9; text-align: right; }
+
+@container (max-width: 900px) {
+  .t-citrus__bento { grid-template-columns: repeat(2, 1fr); }
+  .t-citrus__tile--hero, .t-citrus__tile--wide, .t-citrus__tile--berry, .t-citrus__tile--note { grid-column: span 2; }
+  .t-citrus__menu { display: none; }
+}
+@container (max-width: 520px) {
+  .t-citrus__bento { grid-template-columns: 1fr; }
+  .t-citrus__tile { grid-column: span 1 !important; padding: 5cqw; }
+  .t-citrus__fNote { text-align: left; }
+}

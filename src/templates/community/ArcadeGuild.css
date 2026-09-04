@@ -1,0 +1,176 @@
+/* ARCADE GUILD — 게임 길드 커뮤니티. 아케이드 캐비닛 프레임,
+   픽셀 타이포, CRT 스캔라인, 8비트 계단식 그림자.                 */
+
+.t-arc {
+  container-type: inline-size;
+  --ac-bg: #16082b;
+  --ac-bg2: #1f0f38;
+  --ac-panel: #2a1550;
+  --ac-text: #e9defc;
+  --ac-mute: #9683b8;
+  --ac-magenta: #ff2d95;
+  --ac-cyan: #29e0ff;
+  --ac-yellow: #ffdd4d;
+  --ac-green: #45ff9d;
+  --ac-line: rgba(233, 222, 252, 0.16);
+
+  background: var(--ac-bg);
+  color: var(--ac-text);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow: hidden;
+  position: relative;
+}
+.t-arc *, .t-arc *::before, .t-arc *::after { box-sizing: border-box; }
+.t-arc h1, .t-arc h2, .t-arc h3, .t-arc p { margin: 0; }
+
+.t-arc__crt {
+  position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.16) 0 2px, transparent 2px 4px);
+}
+.t-arc__vig {
+  position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: radial-gradient(80% 70% at 50% 44%, transparent 55%, rgba(0,0,0,0.55));
+}
+.t-arc__wrap { position: relative; z-index: 2; }
+
+.t-arc__px { font-family: "Silkscreen", monospace; letter-spacing: 0.02em; }
+.t-arc__kr { font-family: "Do Hyeon", sans-serif; }
+
+/* ---------------- top bar ---------------- */
+.t-arc__hd {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1rem 3cqw; border-bottom: 2px solid var(--ac-magenta);
+  background: var(--ac-bg2);
+}
+.t-arc__logo {
+  font-family: "Silkscreen", monospace; font-weight: 700; font-size: 1.05rem;
+  color: var(--ac-yellow); text-shadow: 2px 2px 0 var(--ac-magenta);
+}
+.t-arc__nav { display: flex; gap: 1.4rem; }
+.t-arc__nav a {
+  font-family: "Silkscreen", monospace; font-size: 0.68rem;
+  color: var(--ac-mute); text-decoration: none; transition: color 0.2s;
+}
+.t-arc__nav a:hover { color: var(--ac-cyan); }
+.t-arc__coin {
+  font-family: "Silkscreen", monospace; font-size: 0.66rem; color: var(--ac-bg);
+  background: var(--ac-yellow); padding: 0.4rem 0.8rem; white-space: nowrap;
+  box-shadow: 3px 3px 0 var(--ac-magenta);
+}
+
+/* ---------------- hero ---------------- */
+.t-arc__hero { padding: 4cqw 3cqw; text-align: center; position: relative; }
+.t-arc__insert {
+  font-family: "Silkscreen", monospace; font-size: 0.72rem; color: var(--ac-cyan);
+  animation: ac-blink 1.4s steps(2) infinite; margin-bottom: 1.6rem;
+}
+@keyframes ac-blink { 50% { opacity: 0.15; } }
+.t-arc__title {
+  font-family: "Silkscreen", monospace; font-weight: 700;
+  font-size: clamp(1.4rem, 6.2cqw, 5rem); line-height: 1.06;
+  color: var(--ac-text);
+  text-shadow:
+     3px 3px 0 var(--ac-magenta),
+     6px 6px 0 rgba(41,224,255,0.55);
+}
+.t-arc__titleKr {
+  font-family: "Do Hyeon", sans-serif; font-size: clamp(0.95rem, 2cqw, 1.5rem);
+  color: var(--ac-mute); margin-top: 1.8rem;
+}
+.t-arc__heroBtns { display: flex; gap: 0.9rem; justify-content: center; margin-top: 2.2rem; flex-wrap: wrap; }
+.t-arc__btn {
+  font-family: "Silkscreen", monospace; font-size: 0.74rem;
+  padding: 0.85rem 1.6rem; text-decoration: none;
+  background: var(--ac-magenta); color: #fff;
+  box-shadow: 4px 4px 0 var(--ac-bg2);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.t-arc__btn:hover { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ac-bg2); }
+.t-arc__btn--cy { background: var(--ac-cyan); color: var(--ac-bg); }
+
+/* ---------------- stat strip ---------------- */
+.t-arc__stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--ac-line); border-bottom: 2px solid var(--ac-line); }
+.t-arc__stat { padding: 1.6cqw 1rem; text-align: center; border-right: 2px solid var(--ac-line); }
+.t-arc__stat:last-child { border-right: none; }
+.t-arc__stat b { display: block; font-family: "Silkscreen", monospace; font-size: clamp(1rem, 2.4cqw, 1.8rem); color: var(--ac-green); }
+.t-arc__stat span { font-size: 0.66rem; color: var(--ac-mute); letter-spacing: 0.08em; }
+
+/* ---------------- leaderboard ---------------- */
+.t-arc__section { padding: 3.5cqw 3cqw; }
+.t-arc__secTitle {
+  font-family: "Silkscreen", monospace; font-size: clamp(0.95rem, 2.4cqw, 1.6rem);
+  color: var(--ac-yellow); margin-bottom: 1.8rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.t-arc__secTitle::after { content: ""; flex: 1; height: 2px; background: repeating-linear-gradient(90deg, var(--ac-line) 0 6px, transparent 6px 12px); }
+
+.t-arc__board { background: var(--ac-bg2); border: 2px solid var(--ac-line); }
+.t-arc__boardHead {
+  display: grid; grid-template-columns: 3.5rem 1fr 6rem 6rem 5rem;
+  padding: 0.7rem 1rem; background: var(--ac-panel);
+  font-family: "Silkscreen", monospace; font-size: 0.62rem; color: var(--ac-mute);
+}
+.t-arc__row {
+  display: grid; grid-template-columns: 3.5rem 1fr 6rem 6rem 5rem;
+  padding: 0.8rem 1rem; align-items: center;
+  border-top: 1px solid var(--ac-line);
+  text-decoration: none; color: inherit;
+  transition: background 0.18s;
+}
+.t-arc__row:hover { background: var(--ac-panel); }
+.t-arc__rank { font-family: "Silkscreen", monospace; font-size: 0.8rem; color: var(--ac-mute); }
+.t-arc__row:nth-child(2) .t-arc__rank { color: var(--ac-yellow); }
+.t-arc__row:nth-child(3) .t-arc__rank { color: #d8d8e8; }
+.t-arc__row:nth-child(4) .t-arc__rank { color: #d59a4e; }
+.t-arc__player { display: flex; align-items: center; gap: 0.7rem; min-width: 0; }
+.t-arc__pxAvatar { width: 26px; height: 26px; flex-shrink: 0; image-rendering: pixelated; }
+.t-arc__pxAvatar--1 { background: conic-gradient(var(--ac-magenta) 0 25%, var(--ac-cyan) 0 50%, var(--ac-yellow) 0 75%, var(--ac-green) 0); }
+.t-arc__pxAvatar--2 { background: conic-gradient(var(--ac-cyan) 0 50%, var(--ac-panel) 0); }
+.t-arc__pxAvatar--3 { background: conic-gradient(var(--ac-green) 0 33%, var(--ac-magenta) 0 66%, var(--ac-panel) 0); }
+.t-arc__pName { font-family: "Do Hyeon", sans-serif; font-size: 0.95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.t-arc__score { font-family: "Silkscreen", monospace; font-size: 0.76rem; color: var(--ac-cyan); }
+.t-arc__lv { font-size: 0.74rem; color: var(--ac-mute); }
+.t-arc__tier { font-family: "Silkscreen", monospace; font-size: 0.58rem; padding: 0.15rem 0.4rem; text-align: center; }
+.t-arc__tier--s { background: var(--ac-magenta); color: #fff; }
+.t-arc__tier--a { background: var(--ac-cyan); color: var(--ac-bg); }
+.t-arc__tier--b { background: var(--ac-panel); color: var(--ac-mute); }
+
+/* ---------------- quest board ---------------- */
+.t-arc__quests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+.t-arc__quest {
+  background: var(--ac-bg2); border: 2px solid var(--ac-line);
+  padding: 1.6rem 1.4rem; display: flex; flex-direction: column; gap: 0.9rem;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.t-arc__quest:hover { transform: translate(-3px, -3px); border-color: var(--ac-cyan); box-shadow: 6px 6px 0 rgba(41,224,255,0.25); }
+.t-arc__questTag { align-self: flex-start; font-family: "Silkscreen", monospace; font-size: 0.58rem; padding: 0.2rem 0.5rem; background: var(--ac-panel); color: var(--ac-yellow); }
+.t-arc__questTitle { font-family: "Do Hyeon", sans-serif; font-size: 1.15rem; line-height: 1.35; }
+.t-arc__questDesc { font-size: 0.8rem; color: var(--ac-mute); }
+.t-arc__xp { height: 10px; background: var(--ac-panel); border: 1px solid var(--ac-line); }
+.t-arc__xpFill { height: 100%; background: repeating-linear-gradient(90deg, var(--ac-green) 0 4px, #2fd67f 4px 8px); transform-origin: left; animation: ac-xp 1.3s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes ac-xp { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.t-arc__questFoot { display: flex; justify-content: space-between; font-family: "Silkscreen", monospace; font-size: 0.6rem; color: var(--ac-mute); }
+
+/* ---------------- footer ---------------- */
+.t-arc__ft {
+  border-top: 2px solid var(--ac-magenta); padding: 2.5cqw 3cqw;
+  display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-family: "Silkscreen", monospace; font-size: 0.62rem; color: var(--ac-mute);
+}
+
+@container (max-width: 900px) {
+  .t-arc__quests { grid-template-columns: 1fr; }
+  .t-arc__nav { display: none; }
+  .t-arc__stats { grid-template-columns: 1fr 1fr; }
+  .t-arc__stat:nth-child(2) { border-right: none; }
+  .t-arc__boardHead, .t-arc__row { grid-template-columns: 2.6rem 1fr 5rem 4rem; }
+  .t-arc__boardHead span:nth-child(4), .t-arc__row .t-arc__lv { display: none; }
+}
+@container (max-width: 520px) {
+  .t-arc__stats { grid-template-columns: 1fr; }
+  .t-arc__stat { border-right: none; border-bottom: 2px solid var(--ac-line); }
+  .t-arc__boardHead, .t-arc__row { grid-template-columns: 2.2rem 1fr 4.4rem; }
+  .t-arc__boardHead span:nth-child(5), .t-arc__row .t-arc__tier { display: none; }
+}
